@@ -47,13 +47,13 @@ class IndexController
             return;
         }
         $red = $izraz->fetch();
-        if(!password_verify(App::param("password"),$red->lozinka)){
+        if(!password_verify(App::param("password"),$red->password)){
             $view->render("login",["greska"=>"Netočna lozinka"]);
             return;
         }
         $korisnik = new stdClass();
         $korisnik->email=$red->email;
-        $korisnik->imePrezime=$red->ime . " " . $red->prezime;
+        $korisnik->firstnamelastname=$red->firstname . " " . $red->lastname;
         $_SESSION["autoriziran"]=$korisnik;
         
         $view->render("privatno/nadzornaPloca");

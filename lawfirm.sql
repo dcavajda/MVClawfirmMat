@@ -1,12 +1,4 @@
 
-/*
-c:\xampp\mysql\bin\mysql -uedunova -pedunova --default_character_set=utf8 < "C:\LawFirm\LawFirm.sql"
-*/
-
-drop database if exists LawFirm;
-create database LawFirm default character set utf8;
-use LawFirm;
-
  create table operater(
 operater_id int not null primary key auto_increment,
 firstname varchar (50),

@@ -7,7 +7,7 @@
 
       <?php if(isset($_SESSION["autoriziran"])): ?>
         <a href="<?php echo App::config("url") ?>index/logout">Odjava
-        <?php echo $_SESSION["autoriziran"]->imePrezime;?></a>
+        <?php echo $_SESSION["autoriziran"]->firstnamelastname;?></a>
       <?php else:?>
         <a href="<?php echo App::config("url") ?>index/login">Prijava </a>
       <?php endif;?>
@@ -43,15 +43,11 @@
 
         <a href="<?php echo App::config("url") ?>index/logout">Odjava
 
-        <?php echo $_SESSION["autoriziran"]->imePrezime;?></a>
+        <?php echo $_SESSION["autoriziran"]->firstnamelastname;?></a>
       <?php else:?>
         <a href="<?php echo App::config("url") ?>index/login">Prijava</a>
       <?php endif;?>
       </li>
-
-
-
-
 
       <li>
         <a href="<?php echo App::config("url") ?>">
@@ -63,12 +59,12 @@
       </li>
       <li>
         <a href="<?php echo App::config("url") ?>index/kontakt">Kontakt</a>
+        
       </li> 
     </ul>
   </div>
 
-
-
     </ul>
   </div>
 </div>
+
