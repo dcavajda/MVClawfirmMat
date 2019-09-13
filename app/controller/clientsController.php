@@ -8,20 +8,8 @@ class clientsController extends Controller
     {
 
         $this->view->render("privatno/clients/index",
-    
-        ["clients"=>Client::getClients()]);
-    }
+        ["clients"=>client::getclients()]);
 
-    public function pripremanovi()
-    {
-        $this->view->render("privatno/clients/novi");
-    }
-
-    public function novi()
-    {  
-       //tu dođu kontorle
-       Client::novi();
-       $this->index();
     }
 
 

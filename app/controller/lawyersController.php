@@ -8,7 +8,7 @@ class lawyersController extends Controller
     {
 
         $this->view->render("privatno/lawyers/index",
-        ["lawyers"=>Lawyer::getlawyers()]);
+        ["lawyers"=>lawyer::getlawyers()]);
     }
 
 }
