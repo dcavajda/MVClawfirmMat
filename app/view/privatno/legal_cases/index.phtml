@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="col s2">
+    <h5>Legal cases in office</h5>
+    <div class="responsive-table">
+      <table id="tablicaSmjerovi">
+      
+          <thead>
+            <tr>
+            <th>lawyer</th>
+            <th>client</th>
+            <th>case_date_start</th>
+            <th>case_date_end</th>
+            </tr>
+          </thead>
+
+          <tbody>
+          <?php foreach($legal_cases as $legal_case): ?>
+            
+              <tr>
+              <td><?php echo $legal_case->lawyer_id?></td>
+                <td><?php echo $legal_case->client_id?></td>
+                <td><?php echo $legal_case->case_date_start?></td>
+                <td><?php echo $legal_case->case_date_end?></td>
+              </tr>
+            <?php endforeach;?>
+          </tbody>
+      </table>
+    </div>
+  </div>
+</div>

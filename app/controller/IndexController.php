@@ -2,6 +2,18 @@
 
 class IndexController
 {
+    private $view;
+
+    public function __construct()
+    {
+        $this->view = new View();
+    }
+
+    public function era()
+    {
+        $this->view->render("era");
+    }
+    
     public function index()
     {
        $view = new View();

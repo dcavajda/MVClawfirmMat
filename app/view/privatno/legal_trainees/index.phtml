@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="col s2">
+    <h5>Legal trainees in your office</h5>
+    <div class="responsive-table">
+      <table id="tablicaSmjerovi">
+      
+          <thead>
+            <tr>
+            <th>firstname</th>
+            <th>lastname</th>
+            <th>OIB</th>
+            <th>IBAN</th>
+            </tr>
+          </thead>
+
+          <tbody>
+          <?php foreach($legal_trainees as $legal_trainee): ?>
+            
+              <tr>
+              <td><?php echo $legal_trainee->firstname?></td>
+                <td><?=$legal_trainee->lastname?></td>
+                <td><?php echo $legal_trainee->IBAN?></td>
+                <td><?php echo $legal_trainee->OIB?></td>
+              </tr>
+            <?php endforeach;?>
+          </tbody>
+      </table>
+    </div>
+  </div>
+</div>
