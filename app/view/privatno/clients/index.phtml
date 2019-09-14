@@ -1,9 +1,15 @@
+<a href="<?php echo App::config("url") ?>clients/pripremaNovi" 
+
+class=" button expanded">
+<i class="fas fa-plus-square"></i>
+Dodaj novi smjer</a>
+
+
 <div class="container">
   <div class="col s2">
     <h5>Clients in your office</h5>
     <div class="responsive-table">
       <table id="tablicaSmjerovi">
-      
           <thead>
             <tr>
             <th>Firstname</th>
@@ -12,12 +18,11 @@
             <th>IBAN</th>
             </tr>
           </thead>
-
           <tbody>
             <?php foreach($clients as $client): ?>
               <tr>
                 <td><?php echo $client->firstname?></td>
-                <td><?php echo $client->lastname?></td>
+                <td><?=$client->lastname?></td>
                 <td><?php echo $client->OIB?></td>
                 <td><?php echo $client->IBAN?></td>
               </tr>
