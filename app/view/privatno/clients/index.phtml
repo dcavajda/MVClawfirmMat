@@ -1,10 +1,37 @@
-<a href="<?php echo App::config("url") ?>clients/pripremaNovi" 
-class="btn-centre btn-small waves-effect waves-light red">
-<i class="material-icons">add</i>
-</a>Add new client</a>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<script> 
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems, {
+      direction:'right'
+    });
+  });
+</script>
+<div class="fixed-action-btn" style="top: 80px; left: 15px;">
+    <a class="btn-floating btn-large red">
+      <i class="large material-icons">mode_edit</i>
+    </a>
+    <ul>
+    <li>
+       
+      <a class="btn-floating red"><i class="material-icons">delete</i></i></a></li>
+        
+
+      <li><a class="btn-floating yellow darken-1"><i class="material-icons">update</i></a></li>
+
+      <a href="<?php echo App::config("url") ?>clients/pripremaNovi" 
+      <a class="btn-floating blue"><i class="material-icons">fiber_new</i></a></li>
+
+    </ul>
+  </div>
+      
 <div class="container">
   <div class="col s2">
+    <br>
+    <br>
     <h5>Clients in your office</h5>
     <div class="responsive-table">
       <table id="tablicaSmjerovi">
