@@ -107,6 +107,11 @@ $(document).ready(function(){
           <a href="<?php echo App::config("url") ?>index/era">ERA</a>
         </li>
       <?php endif;?>
+      <li <?php echo Utility::active('/'); //ne radi ?>>
+        <a href="<?php echo App::config("url") ?>">
+            <?php echo App::config("nazivApp"); ?>
+        </a>
+      </li>
       <li <?php echo Utility::active('/index/onama'); ?>>
         <a href="<?php echo App::config("url") ?>index/onama">O nama</a>
       </li>

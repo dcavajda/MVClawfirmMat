@@ -1,9 +1,7 @@
 <a href="<?php echo App::config("url") ?>clients/pripremaNovi" 
-
-class=" button expanded">
-<i class="fas fa-plus-square"></i>
-Dodaj novi smjer</a>
-
+class="btn-centre btn-small waves-effect waves-light red">
+<i class="material-icons">add</i>
+</a>Add new client</a>
 
 <div class="container">
   <div class="col s2">
@@ -32,3 +30,32 @@ Dodaj novi smjer</a>
     </div>
   </div>
 </div>
+
+<td>
+
+  <a title="Promjeni 
+  <?php echo $client->firstname ?>
+  <?php echo $client->lastname ?>
+  <?php echo $client->IBAN ?>
+  <?php echo $client->OIB ?>"    
+    href="<?php echo App::config("url") ?> client/pripremaPromjena/ <?php echo $client->client_id ?>">
+
+    <i class="fas fa-edit fa-2x" style="color: orange"></i>
+
+  </a>
+
+              <a title="Obriši 
+              <?php echo $client->firstname ?>
+              <?php echo $client->lastname ?>
+              <?php echo $client->IBAN?>
+              <?php echo $client->OIB ?>" 
+
+                  href="<?php 
+                  echo App::config("url") 
+                  ?>client/brisanje/<?php echo $client->client_id ?>">
+
+                  <i class="fas fa-trash fa-2x" style="color: red"></i>
+
+              </a>      
+        
+</td>
