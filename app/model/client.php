@@ -23,4 +23,16 @@ class client
         $izraz->execute($_POST);
     }
 
+    public static function brisi($id)
+    {
+        $veza = DB::getInstance();
+        $izraz = $veza->prepare("
+        
+        delete from client where client_id=:client_id
+        
+        ");
+        $izraz->execute(['client_id'=>$id]);
+    }
+
+
 }

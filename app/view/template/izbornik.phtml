@@ -1,7 +1,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
 <script> 
 $(document).ready(function(){
     $('.sidenav').sidenav();
@@ -63,18 +61,15 @@ $(document).ready(function(){
         <a href="<?php echo App::config("url") ?>index/login">Prijava</a>
       <?php endif;?>
       </li>
-    </ul>
-  </div>
-</div>
-     
-      
-    </ul>
+    </div>
   </div>
 
-  </nav>
-  <ul class="sidenav" id="mobile-nav">
+     
+      
+
   
-  <li>
+  <ul class="sidenav" id="mobile-nav">
+      <li>
       <?php if(isset($_SESSION["autoriziran"])): ?>
         <a href="<?php echo App::config("url") ?>index/logout">Odjava
         <?php echo $_SESSION["autoriziran"]->firstnamelastname;?></a>
@@ -82,7 +77,6 @@ $(document).ready(function(){
         <a href="<?php echo App::config("url") ?>index/login">Prijava</a>
       <?php endif;?>
       </li>
-
       <?php if(isset($_SESSION["autoriziran"])): ?>
         <li <?php echo Utility::active('/index/nadzornaPloca'); ?>>
           <a href="<?php echo App::config("url") ?>index/nadzornaPloca">Nadzorna ploča</a>
@@ -118,8 +112,6 @@ $(document).ready(function(){
       <li <?php echo Utility::active('/index/kontakt'); ?>>
         <a href="<?php echo App::config("url") ?>index/kontakt">Kontakt</a>
       </li> 
-
-
   </ul>
-
+</nav>
         

@@ -21,4 +21,10 @@ class ClientsController extends Controller
        $this->index();
     }
 
+    public function brisanje($id)
+    {  
+       Client::brisi($id);
+       $this->index();
+    }
+
 }
