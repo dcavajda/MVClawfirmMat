@@ -33,11 +33,18 @@ class App
             $function = strtolower($pathParts[2]);
         }
 
+        if(!isset($pathParts[3])|| empty($pathParts[3])){
+            $id = 0;
+        }else{
+            $id = (int)$pathParts[3];
+        }
+        
+        
         //echo $function;
 
         if(class_exists($controller) && method_exists($controller,$function)){
             $instanca = new $controller();
-            $instanca->$function();
+            $instanca->$function($id);
         }else{
             if(App::config("dev")){
                 echo $controller . "->" . $function . " funkcija ne postoji";
@@ -46,8 +53,6 @@ class App
             }
             
         }
-
-
 
     }
 

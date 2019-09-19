@@ -23,21 +23,25 @@
                     <input type="text" id="OIB" name="OIB">
                 </label>
 
-                
+        
                 <hr />
                 <div class="grid-x">
+                    <div class="large-3 small-5 column">
 
-                    <div class="large-8 small-6 column">
-                        <input class="button expanded"
-                            type="submit" value="Add new">
-                    </div>
-                        <br>
-                    <div class="large-8 small-6 column">
-                        
-                        <a href="<?php echo App::config("url")?>clients/index">
-                        <input class="button expanded"
-                        type="submit" value="Back to Clients">
+                        <a class="waves-effect waves-light btn"
+
+                            href="<?php echo App::config("url")?>clients/index">
+                            Back to clients
                         </a>
+                    </div>
+                    <div class="large-1 small-1 column">
+                        
+                    </div>
+                    <div class="large-8 small-6 column">
+
+                        <input class="waves-effect waves-light btn"
+
+                            type="submit" value="Add new client">
                     </div>
                 </div>
     </fieldset>
