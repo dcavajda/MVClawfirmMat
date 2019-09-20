@@ -56,7 +56,6 @@ class App
 
     }
 
-
     public static function config($key)
     {
         $config = include BP . "app/config.php";
@@ -64,8 +63,21 @@ class App
         return $config[$key];
     }
 
-    public static function param($key)
+    public static function param($key,$value='')
     {
+        if($value!==''){
+            if(isset($_REQUEST[$key])){
+                $_REQUEST[$key]=$value;
+               }
+               if(isset($_GET[$key])){
+                $_GET[$key]=$value;
+               }
+               if(isset($_POST[$key])){
+                 $_POST[$key]=$value;
+               }
+               return;
+        }
+        
        if(isset($_REQUEST[$key])){
         return $_REQUEST[$key]; //short cuircuiting
        }
@@ -78,4 +90,7 @@ class App
 
        return "";
     }
+
+
+
 }
