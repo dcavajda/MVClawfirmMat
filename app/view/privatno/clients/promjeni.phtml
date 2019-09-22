@@ -1,0 +1,18 @@
+
+<form method="post" 
+    action="<?php echo App::config("url")?>clients/promjeni/<?php echo $id ?>">
+        <?php include_once 'detalji.phtml' ?>
+            <div class="grid-x">
+                    <div class="large-3 small-5 column">
+                        <a class="alert button expanded"
+                            href="<?php echo App::config("url")?>clients/index">
+                            Odustani
+                        </a>
+                    </div>
+                        
+                    <div class="large-8 small-6 column">
+                        <input class="button expanded"
+                            type="submit" value="Promjena">
+                    </div>
+            </div>
+</form>

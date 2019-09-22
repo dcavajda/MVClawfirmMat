@@ -20,6 +20,7 @@ class="waves-effect waves-light btn center-align">
       </tr>
     </thead>
 
+
     <tbody>
       <?php foreach($clients as $client): ?>
         <tr>
@@ -29,10 +30,10 @@ class="waves-effect waves-light btn center-align">
           <td><?php echo $client->IBAN?></td>
 
           <td>
-          <a title="Promjeni <?php echo $client->firstname ?>" 
+          <a title="promjeni <?php echo $client->firstname ?>" 
               href="<?php 
               echo App::config("url") 
-              ?>clients/pripremaPromjena/<?php echo $client->client_id ?>">
+              ?>clients/pripremaPromjeni/<?php echo $client->client_id ?>">
               <i class="fas fa-edit fa-2x" style="color: orange"></i>
           </a>
 

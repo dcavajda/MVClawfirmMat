@@ -1,32 +1,21 @@
-
 <form method="post" 
-  action="<?php echo App::config("url")?>clients/novi">
-    <fieldset class="fieldset">
-      <legend>Add new client</legend>
-        <?php echo Utility::inputText(
-         isset($greska) ? $greska : null,'firstname','firstname');?>
-        <?php echo Utility::inputText(
-          isset($greska) ? $greska : null,'lastname','lastname');?>
-        <?php echo Utility::inputText(
-          isset($greska) ? $greska : null,'IBAN','IBAN');?>
-         <?php echo Utility::inputText(
-         isset($greska) ? $greska : null,'OIB','OIB');?>
 
-    </form>
-</form>           
-<hr />
-<div class="grid-x">
-<div class="large-3 small-5 column">
-<a class="waves-effect waves-light btn"
- href="<?php echo App::config("url")?>clients/index">
-Back to clients
-</a>
-</div>
-<div class="large-1 small-1 column">    
-</div>
-<div class="large-8 small-6 column">
-<input class="waves-effect waves-light btn"
-type="submit" value="Add new client">
-</div>
-</div>
+    action="<?php echo App::config("url")?>clients/novi">
+    <?php include_once 'detalji.phtml' ?>
+        <div class="grid-x">
+
+            <a class="waves-effect waves-light btn"
+         href="<?php echo App::config("url")?>clients/index">
+            Back to clients
+
+            </a>
+            </div>
+                <input class="waves-effect waves-light btn"
+                type="submit" value="Add new client">
+            </div>
+        </div>
+
+   
 </form>
+
+

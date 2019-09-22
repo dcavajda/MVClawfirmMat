@@ -3,16 +3,23 @@
 class ClientsController extends Controller
 {
 
+    private $viewGreska="";
+    private $id=0;
+
+
     public function index()
     {  
         $this->view->render("privatno/clients/index",
             ["clients"=>Client::getclients()]);
     }
 
+
+
     public function pripremaNovi()
     {
         $this->view->render("privatno/clients/novi");
     }
+
 
     public function novi()
     {  
@@ -23,6 +30,41 @@ class ClientsController extends Controller
        Client::novi();
        $this->index();
     }
+
+
+
+    public function pripremaPromjeni($id)
+    {
+        App::setParams(Client::read($id));
+        App::param('firstname',str_replace('.',',',App::param('firstname')));
+        App::param('lastname',str_replace('.',',',App::param('lastname')));
+        $this->view->render("privatno/clients/promjeni", ['id'=>$id]);
+    }
+
+
+    public function promjeni($id)
+    {
+        $this->viewGreska="privatno/clients/promjeni";
+        $this->id=$id;
+
+        if(!$this->kontrole()){
+            return;
+        }
+  
+         Client::promjeni($id);
+         $this->index();
+    }
+
+
+
+
+
+    public function brisanje($id)
+    {  
+       Client::brisi($id);
+       $this->index();
+    }
+
 
     private function kontrole(){
         if(trim(App::param('firstname'))===''){
@@ -69,9 +111,7 @@ class ClientsController extends Controller
 
 }
 
-    public function pripremaPromjena($id){
 
-    }
     private function greska($polje,$poruka){
         $this->view->render("privatno/clients/novi",
             ['greska'=>
@@ -82,11 +122,7 @@ class ClientsController extends Controller
 
     
 
-    public function brisanje($id)
-    {  
-       Client::brisi($id);
-       $this->index();
-    }
+    
 
 
 

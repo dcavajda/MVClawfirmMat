@@ -91,6 +91,12 @@ class App
        return "";
     }
 
+    public static function setParams($parametri){
+        foreach ($parametri as $key => $value) {
+            App::param($key,$value);
+       }
+    } 
+
 
 
 }

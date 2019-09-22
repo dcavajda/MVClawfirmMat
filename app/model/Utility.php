@@ -11,6 +11,7 @@ class Utility
         }
     }
 
+    
     public static function sumProperties(array $arr, $property) {
 
         $sum = 0;
