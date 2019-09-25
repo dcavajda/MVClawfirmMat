@@ -1,0 +1,18 @@
+
+<form method="post" 
+     action="<?php echo App::config("url")?>lawyers/promjeni/<?php echo $id ?>">
+        <?php include_once 'detalji.phtml' ?>
+        <div class="grid-x">
+         <div>
+          <a class="waves-effect waves-light btn"
+           href="<?php echo App::config("url")?>lawyers/index">
+            Back
+            </a>
+            </div>
+            <div>
+            <input class="waves-effect waves-light btn"
+            type="submit" value="Change lawyer">
+            </div>
+     </div>
+            
+</form>

@@ -1,27 +1,64 @@
-<div class="container">
-  <div class="col s2">
-    <h5>Lawyers in your office</h5>
-    <div class="responsive-table">
-      <table id="tablicaSmjerovi">
-          <thead>
-            <tr>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>OIB</th>
-            <th>IBAN</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php foreach($lawyers as $lawyer): ?>
-              <tr>
-                <td><?php echo $lawyer->firstname?></td>
-                <td><?=$lawyer->lastname?></td>
-                <td><?php echo $lawyer->OIB?></td>
-                <td><?php echo $lawyer->IBAN?></td>
-              </tr>
-            <?php endforeach;?>
-          </tbody>
-      </table>
+<a href="<?php echo App::config("url") ?>lawyers/pripremaNovi" 
+class="waves-effect waves-light btn center-align">
+<i class="material-icons left">add_box</i> Add new lawyer</a>
+</a>
+  <?php foreach($lawyers as $lawyer): ?>
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m4">
+          <div class= "center-align">
+            <div class="card">
+              <div class="card-content">
+                  <div class="card-title green white-text">
+                  <h5>Lawyer information</h5>
+                  </div>
+                  <ul class="collection">
+                  <li>
+                  <img src="<?php echo App::config("url") ?>public/img/nepoznataOsoba.png">
+                  <li><?php echo $lawyer->firstname?></li>
+                  <li><?php echo $lawyer->lastname?></li>
+                  <li><?php echo $lawyer->OIB?></li>
+                  <li><?php echo $lawyer->IBAN?></li>
+                  </ul>
+                  <div>
+                      <a title="promjeni <?php echo $lawyer->firstname ?>" 
+                      href="<?php echo App::config("url")?>lawyers/pripremaPromjeni/
+                      <?php echo $lawyer->lawyer_id ?>">
+                <div class="btn btn-block btn-large pink">Change information</div>
+                  
+                    <a title="Obriši <?php echo $lawyer->lawyer_id ?>" 
+                    onclick="return confirm('Sigurno obrisati <?php echo $lawyer->lawyer_id ?>?');"
+                    href="<?php 
+                    echo App::config("url") 
+                    ?>lawyers/brisanje/<?php echo $lawyer->lawyer_id ?>">
+                  <div class="btn btn-block btn-large pink">Delete lawyer</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+  <?php endforeach;?>
+
+
+
+  <style>
+  .container{
+    margin-top:15px;
+  }
+  .card-content{
+    text-align: center; 
+    padding: 0px !important;
+  }
+  ul li {
+    font-weight: bold; 
+  }
+  .card{
+  transition: .5s;
+  }
+  .card:hover{
+    transform:scale(1.05);
+  }
+</style>
+
