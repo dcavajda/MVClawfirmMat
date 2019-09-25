@@ -21,8 +21,11 @@ class ClientsController extends Controller
     }
 
 
+
     public function novi()
     {  
+        $this->viewGreska="privatno/clients/novi";
+
        //tu dođu kontrole
       if(!$this->kontrole()){
           return;
@@ -42,6 +45,7 @@ class ClientsController extends Controller
     }
 
 
+
     public function promjeni($id)
     {
         $this->viewGreska="privatno/clients/promjeni";
@@ -56,9 +60,6 @@ class ClientsController extends Controller
     }
 
 
-
-
-
     public function brisanje($id)
     {  
        Client::brisi($id);
@@ -66,20 +67,47 @@ class ClientsController extends Controller
     }
 
 
-    private function kontrole(){
+    private function kontrole()
+    {
+        if(!$this->kontrolaFirstname()){
+            return;
+        }
+        
+        if(!$this->kontrolaLastname()){
+            return;
+        }
+
+        if(!$this->kontrolaIBAN()){
+            return;
+        }
+
+        if(!$this->kontrolaOIB()){
+            return;
+        }
+
+    return true;
+    }
+
+    private function kontrolaFirstname()
+    {
+
         if(trim(App::param('firstname'))===''){
             $this->greska('firstname','must add Firstname');
             return false;
         }
     
-
         if(strlen(App::param('firstname'))>50){
             $this->greska('firstname','no more than 50 letters (now: ' . 
             strlen(App::param('firstname')) . ')');
             return false;
         }
-    
-    
+    return true;
+    }
+
+    private function kontrolaLastname()
+    {
+
+
         if(trim(App::param('lastname'))===''){
             $this->greska('lastname','must add lastname');
             return false;
@@ -91,6 +119,11 @@ class ClientsController extends Controller
         return false;
        } 
 
+       return true;
+    }   
+    
+    private function kontrolaIBAN()
+    {
        if(trim(App::param('IBAN'))===''){
         $this->greska('IBAN','must add IBAN');
         return false;
@@ -101,30 +134,29 @@ class ClientsController extends Controller
             strlen(App::param('IBAN')) . ')');
             return false;
         } 
+        return true;
+    }   
 
+    private function kontrolaOIB()
+    {
         if(trim(App::param('OIB'))===''){
             $this->greska('OIB','must add OIB');
             return false;
             }
-
     return true;
-
-}
+    }  
 
 
     private function greska($polje,$poruka){
-        $this->view->render("privatno/clients/novi",
-            ['greska'=>
-                ['polje'=>$polje,
-                 'poruka'=>$poruka]
-            ]);
+        $this->view->render($this->viewGreska,
+        ['greska'=>
+            ['polje'=>$polje,
+             'poruka'=>$poruka],
+         'id'=>$this->id
+        ]);
     }
 
     
-
-    
-
-
 
 }
 

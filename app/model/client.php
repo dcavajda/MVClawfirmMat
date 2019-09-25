@@ -18,10 +18,10 @@ class Client
         insert into client values
         (null,:firstname,:lastname,:IBAN,:OIB)
         
-        
         ");
         $izraz->execute($_POST);
     }
+
 
     public static function read($id)
     {

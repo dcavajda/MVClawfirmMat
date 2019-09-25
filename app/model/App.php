@@ -38,13 +38,17 @@ class App
         }else{
             $id = (int)$pathParts[3];
         }
-        
-        
+
         //echo $function;
 
         if(class_exists($controller) && method_exists($controller,$function)){
             $instanca = new $controller();
-            $instanca->$function($id);
+            if($id>0){
+                $instanca->$function($id);
+            }else{
+                $instanca->$function();
+            }
+            
         }else{
             if(App::config("dev")){
                 echo $controller . "->" . $function . " funkcija ne postoji";
@@ -54,7 +58,10 @@ class App
             
         }
 
+
+
     }
+
 
     public static function config($key)
     {
@@ -66,18 +73,25 @@ class App
     public static function param($key,$value='')
     {
         if($value!==''){
+            $postavljen=false;
             if(isset($_REQUEST[$key])){
                 $_REQUEST[$key]=$value;
+                $postavljen=true;
                }
                if(isset($_GET[$key])){
                 $_GET[$key]=$value;
+                $postavljen=true;
                }
                if(isset($_POST[$key])){
                  $_POST[$key]=$value;
+                 $postavljen=true;
+               }
+               if(!$postavljen){
+                $_REQUEST[$key]=$value;
+                $_POST[$key]=$value;
                }
                return;
         }
-        
        if(isset($_REQUEST[$key])){
         return $_REQUEST[$key]; //short cuircuiting
        }
@@ -94,9 +108,7 @@ class App
     public static function setParams($parametri){
         foreach ($parametri as $key => $value) {
             App::param($key,$value);
-       }
-    } 
-
-
+        }
+    }
 
 }
