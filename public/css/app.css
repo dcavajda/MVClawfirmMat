@@ -1,26 +1,19 @@
-.fixed-action-btn{
-    right:23px;
-    }
 
 
-ol#smjerovi{
-    list-style-type: upper-roman;
-}
 
-table#tablicaSmjerovi > tbody > tr > td:nth-child(2),
-table#tablicaSmjerovi > tbody > tr > td:nth-child(3),
-table#tablicaSmjerovi > tbody > tr > td:nth-child(4),
-table#tablicaSmjerovi > tfoot > tr > td:nth-child(1),
-table#tablicaSmjerovi > tfoot > tr > td:nth-child(2),
-table#tablicaSmjerovi > tfoot > tr > td:nth-child(3)
+
+#container
 {
-    text-align: right;
+    margin-top:15px;
 }
-table#tablicaSmjerovi > tbody > tr > td:nth-child(5)
-{
-    text-align: center;
+.card-content {
+    text-align: center; 
+    padding: 0px !important;
 }
-
-table#tablicaSmjerovi > thead > tr > th{
-    text-align: center;
+.card{
+    transition: .5s;
 }
+.card:hover{
+    transform:scale(1.05);
+}
+ 

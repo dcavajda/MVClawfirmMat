@@ -6,11 +6,11 @@ class="waves-effect waves-light btn center-align">
 </a>
 
 <fieldset   class="fieldset">      
-  <table id="tablicaSmjerovi">
+  <table id="tablicaSmjerovi" >
   <div>
     <h5 class="center-align">Clients in your office</h5>
   </div>
-    <table id="tablicaSmjerovi">
+    <table id="tablicaSmjerovi"class=striped>
     <thead>
       <tr>
         <th>Firstname</th>
@@ -19,9 +19,8 @@ class="waves-effect waves-light btn center-align">
         <th>IBAN</th>
       </tr>
     </thead>
-
-
     <tbody>
+      
       <?php foreach($clients as $client): ?>
         <tr>
           <td><?php echo $client->firstname?></td>
@@ -36,12 +35,12 @@ class="waves-effect waves-light btn center-align">
               ?>clients/pripremaPromjeni/<?php echo $client->client_id ?>">
               <i class="fas fa-edit fa-2x" style="color: orange"></i>
           </a>
-
             <a title="Obriši <?php echo $client->client_id ?>" 
               onclick="return confirm('Sigurno obrisati <?php echo $client->client_id ?>?');"
               href="<?php 
               echo App::config("url") 
               ?>clients/brisanje/<?php echo $client->client_id ?>">
+              
               <i class="fas fa-trash fa-2x" style="color: red"></i>
               </a>
           </td>
@@ -50,3 +49,27 @@ class="waves-effect waves-light btn center-align">
     </tbody>
   </table>
 </fieldset>
+
+<style>
+ol#smjerovi{
+    list-style-type: upper-roman;
+}
+
+table#tablicaSmjerovi > tbody > tr > td:nth-child(2),
+table#tablicaSmjerovi > tbody > tr > td:nth-child(3),
+table#tablicaSmjerovi > tbody > tr > td:nth-child(4),
+table#tablicaSmjerovi > tfoot > tr > td:nth-child(1),
+table#tablicaSmjerovi > tfoot > tr > td:nth-child(2),
+table#tablicaSmjerovi > tfoot > tr > td:nth-child(3)
+{
+    text-align: left;
+}
+table#tablicaSmjerovi > tbody > tr > td:nth-child(6)
+{
+    text-align: left;
+}
+
+table#tablicaSmjerovi > thead > tr > th{
+    text-align: left;
+}
+</style>
