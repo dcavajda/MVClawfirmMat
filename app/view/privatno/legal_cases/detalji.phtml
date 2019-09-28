@@ -1,0 +1,12 @@
+<fieldset class="fieldset">
+    <legend>Popunite tražene podatke</legend>
+
+        <?php echo Utility::inputText(
+         isset($greska) ? $greska : null,'legal_case_code','legal_case_code');?>
+        <br />
+        <?php echo Utility::inputText(
+          isset($greska) ? $greska : null,'case_date_start','case_date_start');?>
+        <br />
+        <?php echo Utility::inputText(
+          isset($greska) ? $greska : null,'case_date_end','case_date_end');?>
+</fieldset>

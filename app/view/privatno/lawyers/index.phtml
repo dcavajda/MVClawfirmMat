@@ -16,10 +16,10 @@ class="waves-effect waves-light btn center-align">
                     <ul class="collection">
                     
                     
-                    <li><?php echo $lawyer->firstname?></li>
-                    <li><?php echo $lawyer->lastname?></li>
-                    <li><?php echo $lawyer->OIB?></li>
-                    <li><?php echo $lawyer->IBAN?></li>
+                    <li>Firstname: <?php echo $lawyer->firstname?></li>
+                    <li>Lastname: <?php echo $lawyer->lastname?></li>
+                    <li>OIB: <?php echo $lawyer->OIB?></li>
+                    <li>IBAN: <?php echo $lawyer->IBAN?></li>
                     </ul>
 
                       <div>
@@ -29,12 +29,14 @@ class="waves-effect waves-light btn center-align">
                       href="<?php 
                       echo App::config("url") 
                       ?>lawyers/brisanje/<?php echo $lawyer->lawyer_id ?>">
+                      
                       <div class="btn btn-block btn-large red accent-2">Delete lawyer</div>
-
+                      </a>
                       <a title="promjeni <?php echo $lawyer->firstname ?>" 
                       href="<?php echo App::config("url")?>lawyers/pripremaPromjeni/
                       <?php echo $lawyer->lawyer_id ?>">
                       <div class="btn btn-block btn-large yellow accent-4">Change information</div>
+                      </a>
                          
                   </div>
                 </div>
