@@ -2,12 +2,33 @@
 
 class Client
 {
-    public static function getclients()
+    public static function getclients($stranica)
     {
+
+        $sps = App::config("stavakaPoStranici");
+        $odKuda=($stranica -1) * $sps;
+        
         $veza = DB::getInstance();
-        $izraz = $veza->prepare("select * from client");
+        $izraz = $veza->prepare("
+        select firstname, lastname, IBAN, OIB
+        from client order by lastname"
+        . $odKuda . ', ' . $sps);
+
         $izraz->execute();
         return $izraz->fetchAll();
+    }
+
+    public static function read($id)
+    {
+        $veza = DB::getInstance();
+        $izraz = $veza->prepare("
+        
+        select * from client where client_id=:client
+        
+        ");
+        $izraz->execute(['client'=>$id]);
+        return $izraz->fetch(PDO::FETCH_ASSOC);
+
     }
 
     public static function novi()
@@ -22,19 +43,6 @@ class Client
         $izraz->execute($_POST);
     }
 
-
-    public static function read($id)
-    {
-        $veza = DB::getInstance();
-        $izraz = $veza->prepare("
-        
-        select * from client where client_id=:client
-        
-        ");
-        $izraz->execute(['client'=>$id]);
-        return $izraz->fetch(PDO::FETCH_ASSOC);
-
-    }
 
     public static function promjeni($id)
     {   
@@ -65,6 +73,21 @@ class Client
         ");
         $izraz->execute(['client_id'=>$id]);
     }
+
+
+    public static function ukupnoStranica()
+    {
+        $veza = DB::getInstance();
+        $izraz = $veza->prepare("
+        
+        select count(client_id) from client
+        
+        ");
+        $izraz->execute();
+        $ukupno = $izraz->fetchColumn();
+        return ceil($ukupno/App::config("stavakaPoStranici"));
+    }
+
 
 
 }

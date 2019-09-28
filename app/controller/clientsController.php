@@ -2,17 +2,33 @@
 
 class ClientsController extends Controller
 {
-
     private $viewGreska="";
     private $id=0;
 
-
-    public function index()
+    public function index($stranica=1)
     {  
-        $this->view->render("privatno/clients/index",
-            ["clients"=>Client::getclients()]);
-    }
+        if($stranica==1){
+            $prethodnaStranica=1;
+        }else{
+            $prethodnaStranica=$stranica-1;
+        }
 
+
+        $ukupnoStranica = Client::ukupnoStranica();
+
+        if($stranica>=$ukupnoStranica){
+            $sljedecaStranica=$ukupnoStranica;
+        }else{
+            $sljedecaStranica=$stranica+1;
+        }
+
+        $this->view->render("privatno/clients/index",
+            ["clients"=>Client::getClients($stranica),
+            "prethodnaStranica"=>$prethodnaStranica,
+            "stranica"=>$stranica,
+            "sljedecaStranica"=>$sljedecaStranica,
+            "ukupnoStranica"=>$ukupnoStranica]);
+    }
 
 
     public function pripremaNovi()
@@ -154,6 +170,25 @@ class ClientsController extends Controller
              'poruka'=>$poruka],
          'id'=>$this->id
         ]);
+    }
+
+    public function napuni()
+    {
+        if(!App::config("dev")){
+            exit;
+        }  
+
+        set_time_limit(0);
+        
+        for($i=0;$i<100;$i++){
+            $_POST["firstname"]="Client";
+            $_POST["lastname"]="$i";
+            $_POST["IBAN"]="";
+            $_POST["OIB"]="";
+
+            Client::novi();
+        }
+        echo "GOTOV";
     }
 
     

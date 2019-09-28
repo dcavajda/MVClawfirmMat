@@ -1,75 +1,79 @@
-
 <a href="<?php echo App::config("url") ?>clients/pripremaNovi" 
-
 class="waves-effect waves-light btn center-align">
 <i class="material-icons left">add_box</i> Add new client</a>
 </a>
+<div id="container">
+  <div class="row">
+        <?php foreach($clients as $client): ?>
+          <div class="col s12 m4 grey lighten-4">
+            <div class= "center-align">
+              <div class="card">
+                <div class="card-content">
+                    <div class="card-title teal accent-4 black-text">
+                    <h5>Client information</h5>
+                    </div>
+                    <img src="<?php echo App::config("url") ?>public/img/nepoznataOsoba.png">
+                    <ul class="collection">
+                    <li>Firstname: <?php echo $client->firstname?></li>
+                    <li>Lastname: <?php echo $client->lastname?></li>
+                    <li>OIB: <?php echo $client->OIB?></li>
+                    <li>IBAN: <?php echo $client->IBAN?></li>
+                    </ul>
+                      <div>
+                      <a title="Obriši <?php echo $client->client_id ?>" 
+                      onclick="return confirm('Sigurno obrisati <?php echo $client->client_id ?>?');"
+                      href="<?php 
+                      echo App::config("url") 
+                      ?>clients/brisanje/<?php echo $client->client_id ?>">
+                      
+                      <div class="btn btn-block btn-large red accent-2">Delete client</div>
+                      </a>
+                      <a title="promjeni <?php echo $client->firstname ?>" 
+                      href="<?php echo App::config("url")?>clients/pripremaPromjeni/
+                      <?php echo $client->client_id ?>">
+                      <div class="btn btn-block btn-large yellow accent-4">Change information</div>
+                      </a>
+                         
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php endforeach;?>  
 
-<fieldset   class="fieldset">      
-  <table id="tablicaSmjerovi" >
-  <div>
-    <h5 class="center-align">Clients in your office</h5>
+      <ul class="pagination center">
+        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+        <li class="active"><a href="#!">1</a></li>
+        <li class="pagination-previous">
+            <a href="<?php echo App::config("url")?>polaznik/index/<?php echo $prethodnaStranica ?>" 
+            aria-label="Prethodna stranica">Back</a>
+            </li>
+            <li class="current"><?php echo $stranica . "/" . $ukupnoStranica ?></li>
+            <li class="pagination-next">
+                <a href="<?php echo App::config("url")?>polaznik/index/<?php echo $sljedecaStranica ?>" 
+              aria-label="Sljedeća stranica">Next</a>
+            </li>
+        <li class="waves-effect"><a href="#!">2</a></li>
+        <li class="waves-effect"><a href="#!">3</a></li>
+        <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+      </ul>
   </div>
-    <table id="tablicaSmjerovi"class=striped>
-    <thead>
-      <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>OIB</th>
-        <th>IBAN</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-      <?php foreach($clients as $client): ?>
-        <tr>
-          <td><?php echo $client->firstname?></td>
-          <td><?=$client->lastname?></td>
-          <td><?php echo $client->OIB?></td>
-          <td><?php echo $client->IBAN?></td>
+</div>
 
-          <td>
-          <a title="promjeni <?php echo $client->firstname ?>" 
-              href="<?php 
-              echo App::config("url") 
-              ?>clients/pripremaPromjeni/<?php echo $client->client_id ?>">
-              <i class="fas fa-edit fa-2x" style="color: orange"></i>
-          </a>
-            <a title="Obriši <?php echo $client->client_id ?>" 
-              onclick="return confirm('Sigurno obrisati <?php echo $client->client_id ?>?');"
-              href="<?php 
-              echo App::config("url") 
-              ?>clients/brisanje/<?php echo $client->client_id ?>">
-              
-              <i class="fas fa-trash fa-2x" style="color: red"></i>
-              </a>
-          </td>
-        </tr>
-      <?php endforeach;?>
-    </tbody>
-  </table>
-</fieldset>
 
 <style>
-ol#smjerovi{
-    list-style-type: upper-roman;
-}
-
-table#tablicaSmjerovi > tbody > tr > td:nth-child(2),
-table#tablicaSmjerovi > tbody > tr > td:nth-child(3),
-table#tablicaSmjerovi > tbody > tr > td:nth-child(4),
-table#tablicaSmjerovi > tfoot > tr > td:nth-child(1),
-table#tablicaSmjerovi > tfoot > tr > td:nth-child(2),
-table#tablicaSmjerovi > tfoot > tr > td:nth-child(3)
+#container
 {
-    text-align: left;
+    margin-top:15px;
 }
-table#tablicaSmjerovi > tbody > tr > td:nth-child(6)
-{
-    text-align: left;
+.card-content {
+    text-align: center; 
+    padding: 0px !important;
 }
-
-table#tablicaSmjerovi > thead > tr > th{
-    text-align: left;
+.card{
+    transition: .5s;
+}
+.card:hover{
+    transform:scale(1.05);
 }
 </style>
