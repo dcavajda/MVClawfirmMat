@@ -7,19 +7,12 @@ class Legal_case
 
         $veza = DB::getInstance();
         $izraz = $veza->prepare("
-        select * from legal_case;
-      
-        /* ne radi sql 
-        select a.legal_case_id, a.client, a.legal_case_code, a.case_date_start, a.case_date_end,
+        select  
+        a.legal_case_code, a.case_date_start, a.case_date_end,
 		b.firstname,b.lastname,b.IBAN,b.OIB
         from legal_case a inner join lawyer b
-        on a.lawyer=b.lawyer_id 
-        where a.legal_case_id=:legal_case
-        */
-
+        on a.lawyer=b.lawyer_id;
         ");
-
-
         $izraz->execute();
         return $izraz->fetchAll();
     }
@@ -29,9 +22,11 @@ class Legal_case
     {
         $veza = DB::getInstance();
         $izraz = $veza->prepare("
-
-        select * from legal_case where legal_case_id=:legal_case
-        
+        select a.legal_case_code, a.case_date_start, a.case_date_end,
+        b.firstname,b.lastname,b.IBAN,b.OIB
+        from legal_case a inner join lawyer b
+        on a.lawyer=b.lawyer_id
+        where a.legal_case_id=:lawyer
         ");
         $izraz->execute(['legal_case'=>$id]);
         return $izraz->fetch(PDO::FETCH_ASSOC);

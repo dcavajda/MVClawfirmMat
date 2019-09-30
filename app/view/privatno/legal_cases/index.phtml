@@ -24,7 +24,7 @@ class="waves-effect waves-light btn center-align">
       <?php foreach($legal_cases as $legal_case): ?>
         <tr>
           <td><?php echo $legal_case->lawyer?></td>
-          <td><?=$legal_case->client?></td>
+          <td><?php echo $legal_case->client?></td>
           <td><?php echo $legal_case->legal_case_code?></td>
           <td><?php echo $legal_case->case_date_start?></td>
           <td><?php echo $legal_case->case_date_end?></td>
