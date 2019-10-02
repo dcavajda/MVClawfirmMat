@@ -1,7 +1,22 @@
-<a href="<?php echo App::config("url") ?>clients/pripremaNovi" 
-class="waves-effect waves-light btn center-align">
-<i class="material-icons left">add_box</i> Add new client</a>
-</a>
+
+<nav>
+    <div class="nav-wrapper">
+      <form action="" method="get">
+        <div class="input-field">
+          <input type="search" required
+           type="text" name="uvjet" id="uvjet" placeholder="unesite uvjet pretraživanja"
+           value="<?php echo App::param("uvjet") ?>" />
+          <input type="hidden" name="trazi" value="true" />
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+      </form>
+    </div>
+</nav>
+
+
+
+<div class="grid-x">
 <div id="container">
   <div class="row">
         <?php foreach($clients as $client): ?>
@@ -12,27 +27,28 @@ class="waves-effect waves-light btn center-align">
                     <div class="card-title teal accent-4 black-text">
                     <h5>Client information</h5>
                     </div>
-                    <img src="<?php echo App::config("url") ?>public/img/nepoznataOsoba.png">
                     <ul class="collection">
-                    <li>Firstname: <?php echo $client->firstname?></li>
-                    <li>Lastname: <?php echo $client->lastname?></li>
-                    <li>OIB: <?php echo $client->OIB?></li>
+                    <li>Firstname: <?php echo $client->firstname ?></li>
+                    <li>Lastname: <?php echo $client->lastname ?></li>
                     <li>IBAN: <?php echo $client->IBAN?></li>
+                    <li>OIB: <?php echo $client->OIB?></li>
                     </ul>
-                      <div>
-                      <a title="Obriši <?php echo $client->client_id ?>" 
-                      onclick="return confirm('Sigurno obrisati <?php echo $client->client_id ?>?');"
-                      href="<?php 
-                      echo App::config("url") 
-                      ?>clients/brisanje/<?php echo $client->client_id ?>">
-                      
-                      <div class="btn btn-block btn-large red accent-2">Delete client</div>
-                      </a>
-                      <a title="promjeni <?php echo $client->firstname ?>" 
-                      href="<?php echo App::config("url")?>clients/pripremaPromjeni/
-                      <?php echo $client->client_id ?>">
-                      <div class="btn btn-block btn-large yellow accent-4">Change information</div>
-                      </a>
+
+                    <div>
+                    
+                    <a title="Obriši" 
+                    onclick="return confirm('Sigurno obrisati <?php echo $client->client_id ?>?');"
+                    href="<?php 
+                    echo App::config("url") 
+                    ?>clients/brisanje/<?php echo $client->client_id ?>">
+                    
+                    <div class="btn btn-block btn-large red accent-2">Delete client</div>
+                    </a>
+                    <a title="promjeni" 
+                    href="<?php echo App::config("url")?>clients/pripremaPromjeni/
+                    <?php echo $client->client_id ?>">
+                    <div class="btn btn-block btn-large yellow accent-4">Change information</div>
+                    </a>
                          
                   </div>
                 </div>
@@ -40,25 +56,38 @@ class="waves-effect waves-light btn center-align">
             </div>
           </div>
         <?php endforeach;?>  
+        </div>
 
-      <ul class="pagination center">
-        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-        <li class="active"><a href="#!">1</a></li>
-        <li class="pagination-previous">
-            <a href="<?php echo App::config("url")?>polaznik/index/<?php echo $prethodnaStranica ?>" 
-            aria-label="Prethodna stranica">Back</a>
-            </li>
-            <li class="current"><?php echo $stranica . "/" . $ukupnoStranica ?></li>
-            <li class="pagination-next">
-                <a href="<?php echo App::config("url")?>polaznik/index/<?php echo $sljedecaStranica ?>" 
-              aria-label="Sljedeća stranica">Next</a>
-            </li>
-        <li class="waves-effect"><a href="#!">2</a></li>
-        <li class="waves-effect"><a href="#!">3</a></li>
-        <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-      </ul>
-  </div>
+    <nav>
+      <div class="pagination center">
+        <form>
+        <li class="waves-effect"><a href="<?php echo App::config("url")?>clients/index/<?php echo $prethodnaStranica ?>?uvjet=<?php echo App::param("uvjet") ?>">
+        <i class="material-icons">chevron_left</i></a></li>
+        <li class="pagination-previous"></li>
+        <li class="active">
+        <a href="<?php echo App::config("url")?>clients/index/<?php echo $prethodnaStranica ?>?uvjet=<?php echo App::param("uvjet") ?>" 
+        >Back</a>
+        </li>
+        <li class="current"><?php echo $stranica . "/" . $ukupnoStranica ?></li>
+        <li class="active">
+        <a href="<?php echo App::config("url")?>clients/index/<?php echo $sljedecaStranica ?>?uvjet=<?php echo App::param("uvjet") ?>" 
+        >Next</a>
+        </li>
+        <li class="waves-effect"><a href="<?php echo App::config("url")?>clients/index/<?php echo $sljedecaStranica ?>?uvjet=<?php echo App::param("uvjet") ?>">
+        <i class="material-icons">chevron_right</i></a></li>
+        <li class="pagination-back"></li>
+        </form>
+      </div>
+      </div>
 </div>
+<a href="<?php echo App::config("url") ?>clients/pripremaNovi" 
+class="waves-effect waves-light btn center-align">
+<i class="material-icons left">add_box</i> Add new client</a>
+</a>
+    
+
+
+ 
 
 
 <style>

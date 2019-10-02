@@ -10,14 +10,13 @@ return [
 "lozinka"=>"dcavajda"
 
     ],
-    "stavakaPoStranici"=>12
+    "stavakaPoStranici"=>6
     
 ];
-
-
 //"server"=>"localhost",
 //"baza"=>"lawfirm",
 //"korisnik"=>"edunova",
 //"lozinka"=>"edunova"
+
 
 

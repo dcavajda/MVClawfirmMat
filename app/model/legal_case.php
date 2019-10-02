@@ -4,15 +4,20 @@ class Legal_case
 {
     public static function getlegal_cases()
     {
-
+       
         $veza = DB::getInstance();
         $izraz = $veza->prepare("
-        select  
-        a.legal_case_code, a.case_date_start, a.case_date_end,
-		b.firstname,b.lastname,b.IBAN,b.OIB
+        select 
+        concat(c.firstname, ' ',c.lastname) as client,
+ 		a.legal_case_code, a.case_date_start, a.case_date_end,		
+        concat(b.firstname, ' ', b.lastname) as lawyer
         from legal_case a inner join lawyer b
-        on a.lawyer=b.lawyer_id;
-        ");
+        on a.lawyer=b.lawyer_id
+        inner join client c
+        on a.client=c.client_id
+
+        "
+        );
         $izraz->execute();
         return $izraz->fetchAll();
     }

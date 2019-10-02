@@ -11,11 +11,14 @@ class Client
         $veza = DB::getInstance();
         $izraz = $veza->prepare("
         select firstname, lastname, IBAN, OIB
-        from client order by lastname"
+        from client 
+        order by lastname
+        limit
+        "
         . $odKuda . ', ' . $sps);
-
-        $izraz->execute();
+        $izraz->execute(["uvjet"=>"%" . App::param("uvjet") . "%"]);
         return $izraz->fetchAll();
+
     }
 
     public static function read($id)
@@ -23,8 +26,8 @@ class Client
         $veza = DB::getInstance();
         $izraz = $veza->prepare("
         
-        select * from client where client_id=:client
-        
+        select firstname, lastname, IBAN, OIB from client where client_id=:client
+
         ");
         $izraz->execute(['client'=>$id]);
         return $izraz->fetch(PDO::FETCH_ASSOC);
@@ -62,17 +65,17 @@ class Client
     }
 
 
-
-    public static function brisi($id)
+    public static function brisi($id) 
     {
         $veza = DB::getInstance();
         $izraz = $veza->prepare("
-        
+            
         delete from client where client_id=:client_id
-        
+            
         ");
         $izraz->execute(['client_id'=>$id]);
     }
+  
 
 
     public static function ukupnoStranica()

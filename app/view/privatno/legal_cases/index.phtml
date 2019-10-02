@@ -12,22 +12,23 @@ class="waves-effect waves-light btn center-align">
     <table id="tablicaSmjerovi"class=striped>
     <thead>
       <tr>
-        <th>Lawyer</th>
-        <th>Client</th>
-        <th>Legal_case_code</th>
-        <th>case_date_start</th>
-        <th>case_date_end</th>
+        <th>Client:</th>
+        <th>Legal_case_code:</th>
+        <th>case_date_start:</th>
+        <th>case_date_end:</th>
+        <th>Lawyer:</th>
       </tr>
     </thead>
     <tbody>
+
       
       <?php foreach($legal_cases as $legal_case): ?>
         <tr>
-          <td><?php echo $legal_case->lawyer?></td>
           <td><?php echo $legal_case->client?></td>
           <td><?php echo $legal_case->legal_case_code?></td>
           <td><?php echo $legal_case->case_date_start?></td>
           <td><?php echo $legal_case->case_date_end?></td>
+          <td><?php echo $legal_case->lawyer?></td>
           <td>
           <a title="promjeni <?php echo $legal_case->legal_case_code ?>" 
               href="<?php 

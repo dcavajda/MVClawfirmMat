@@ -7,6 +7,11 @@ class ClientsController extends Controller
 
     public function index($stranica=1)
     {  
+
+        if(isset($_GET["trazi"])){
+            $stranica=1;
+        }
+
         if($stranica==1){
             $prethodnaStranica=1;
         }else{
@@ -50,8 +55,7 @@ class ClientsController extends Controller
        $this->index();
     }
 
-
-
+   
     public function pripremaPromjeni($id)
     {
         App::setParams(Client::read($id));
@@ -59,8 +63,7 @@ class ClientsController extends Controller
         App::param('lastname',str_replace('.',',',App::param('lastname')));
         $this->view->render("privatno/clients/promjeni", ['id'=>$id]);
     }
-
-
+    
 
     public function promjeni($id)
     {
@@ -171,6 +174,12 @@ class ClientsController extends Controller
          'id'=>$this->id
         ]);
     }
+
+
+
+
+
+
 
     public function napuni()
     {
