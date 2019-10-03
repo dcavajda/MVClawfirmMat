@@ -47,10 +47,10 @@ $(document).ready(function(){
       <?php endif;?>
 
       <li <?php echo Utility::active('/index/onama'); ?>>
-        <a href="<?php echo App::config("url") ?>index/onama">O nama</a>
+        <a href="<?php echo App::config("url") ?>index/onama">About us</a>
       </li>
       <li <?php echo Utility::active('/index/kontakt'); ?>>
-        <a href="<?php echo App::config("url") ?>index/kontakt">Kontakt</a>
+        <a href="<?php echo App::config("url") ?>index/kontakt">Contact</a>
       </li> 
     
       <li>
@@ -58,7 +58,7 @@ $(document).ready(function(){
         <a href="<?php echo App::config("url") ?>index/logout">Odjava
         <?php echo $_SESSION["autoriziran"]->firstnamelastname;?></a>
       <?php else:?>
-        <a href="<?php echo App::config("url") ?>index/login">Prijava</a>
+        <a href="<?php echo App::config("url") ?>index/login">Log in</a>
       <?php endif;?>
       </li>
     </div>

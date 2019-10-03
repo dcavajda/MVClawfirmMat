@@ -1,5 +1,5 @@
 <a href="<?php echo App::config("url") ?>lawyers/pripremaNovi" 
-class="waves-effect waves-light btn center-align">
+class="btn btn-block waves-effect waves-light">
 <i class="material-icons left">add_box</i> Add new lawyer</a>
 </a>
 <div id="container">
@@ -9,7 +9,7 @@ class="waves-effect waves-light btn center-align">
             <div class= "center-align">
               <div class="card">
                 <div class="card-content">
-                    <div class="card-title teal accent-4 black-text">
+                    <div class="card-title grey lighten-4 black-text">
                     <h5>Lawyer information</h5>
                     </div>
                     <img src="<?php echo App::config("url") ?>public/img/nepoznataOsoba.png">
@@ -60,5 +60,8 @@ class="waves-effect waves-light btn center-align">
 }
 .card:hover{
     transform:scale(1.05);
+}
+.btn-block {
+    width: 100%;
 }
 </style>

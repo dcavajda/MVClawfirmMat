@@ -9,7 +9,7 @@ class Legal_case
         $izraz = $veza->prepare("
         select 
         concat(c.firstname, ' ',c.lastname) as client,
- 		a.legal_case_code, a.case_date_start, a.case_date_end,		
+ 		a.legal_case_id, a.legal_case_code, a.case_date_start, a.case_date_end,		
         concat(b.firstname, ' ', b.lastname) as lawyer
         from legal_case a inner join lawyer b
         on a.lawyer=b.lawyer_id

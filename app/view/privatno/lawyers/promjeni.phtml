@@ -4,15 +4,20 @@
         <?php include_once 'detalji.phtml' ?>
         <div class="grid-x">
          <div>
-          <a class="waves-effect waves-light btn"
+          <a class="btn btn-block waves-effect waves-light"
            href="<?php echo App::config("url")?>lawyers/index">
             Back
             </a>
             </div>
             <div>
-            <input class="waves-effect waves-light btn"
+            <input class="btn btn-block waves-effect waves-light"
             type="submit" value="Change lawyer">
             </div>
      </div>
             
 </form>
+<style>
+.btn-block {
+    width: 100%;
+}
+</style>

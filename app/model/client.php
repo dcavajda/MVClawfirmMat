@@ -12,7 +12,7 @@ class Client
         $izraz = $veza->prepare("
         select client_id, firstname, lastname, IBAN, OIB
         from client 
-        where concat(firstname,lastname) like :uvjet
+        where concat(firstname,lastname,ifnull(OIB,'')) like :uvjet
         order by firstname
         limit
         "

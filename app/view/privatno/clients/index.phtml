@@ -13,11 +13,13 @@
       </form>
     </div>
 </nav>
-</div>
+
+
 <a href="<?php echo App::config("url") ?>clients/pripremaNovi" 
-class="waves-effect waves-light btn center-align">
-<i class="material-icons left">add_box</i> Add new client</a>
+  class="btn btn-block waves-effect waves-light">
+  <i class="material-icons left">add_box</i> Add new client</a>
 </a>
+
 
 
 <div class="grid-x">
@@ -28,7 +30,7 @@ class="waves-effect waves-light btn center-align">
             <div class= "center-align">
               <div class="card">
                 <div class="card-content">
-                    <div class="card-title teal accent-4 black-text">
+                    <div class="card-title grey lighten-4 black-text">
                       <h5>Client information</h5>
                     </div>
                     <img src="<?php echo App::config("url") ?>public/img/nepoznataOsoba.png">
@@ -104,5 +106,8 @@ class="waves-effect waves-light btn center-align">
 }
 .card:hover{
     transform:scale(1.05);
+}
+.btn-block {
+    width: 100%;
 }
 </style>

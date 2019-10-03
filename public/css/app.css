@@ -1,7 +1,4 @@
 
-
-
-
 #container
 {
     margin-top:15px;
@@ -16,4 +13,7 @@
 .card:hover{
     transform:scale(1.05);
 }
- 
+
+.btn-block {
+    width: 100%;
+}
