@@ -10,11 +10,14 @@ class Client
         
         $veza = DB::getInstance();
         $izraz = $veza->prepare("
-        select firstname, lastname, IBAN, OIB
+        select client_id, firstname, lastname, IBAN, OIB
         from client 
-        order by lastname
+        where concat(firstname,lastname) like :uvjet
+        order by firstname
         limit
         "
+        
+
         . $odKuda . ', ' . $sps);
         $izraz->execute(["uvjet"=>"%" . App::param("uvjet") . "%"]);
         return $izraz->fetchAll();
@@ -26,7 +29,8 @@ class Client
         $veza = DB::getInstance();
         $izraz = $veza->prepare("
         
-        select firstname, lastname, IBAN, OIB from client where client_id=:client
+        select * from client where client_id=:client
+
 
         ");
         $izraz->execute(['client'=>$id]);
@@ -40,7 +44,7 @@ class Client
         $izraz = $veza->prepare("
         
         insert into client values
-        (null,:firstname,:lastname,:IBAN,:OIB)
+        (null,:firstname,:lastname,:OIB,:IBAN)
         
         ");
         $izraz->execute($_POST);
@@ -52,11 +56,13 @@ class Client
         $veza = DB::getInstance();
         $izraz = $veza->prepare("
         
+
         update client set
         firstname=:firstname,
         lastname=:lastname,
-        IBAN=:IBAN,
-        OIB=:OIB
+        OIB=:OIB,
+        IBAN=:IBAN
+        
         where client_id=:client_id
         
         ");

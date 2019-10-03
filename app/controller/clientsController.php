@@ -55,12 +55,11 @@ class ClientsController extends Controller
        $this->index();
     }
 
+    
    
     public function pripremaPromjeni($id)
     {
         App::setParams(Client::read($id));
-        App::param('firstname',str_replace('.',',',App::param('firstname')));
-        App::param('lastname',str_replace('.',',',App::param('lastname')));
         $this->view->render("privatno/clients/promjeni", ['id'=>$id]);
     }
     

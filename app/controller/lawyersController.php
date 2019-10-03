@@ -36,11 +36,10 @@ class LawyersController extends Controller
 
 
 
+
     public function pripremaPromjeni($id)
     {
         App::setParams(Lawyer::read($id));
-        App::param('firstname',str_replace('.',',',App::param('firstname')));
-        App::param('lastname',str_replace('.',',',App::param('lastname')));
         $this->view->render("privatno/lawyers/promjeni", ['id'=>$id]);
     }
 

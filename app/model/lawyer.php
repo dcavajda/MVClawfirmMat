@@ -10,6 +10,21 @@ class Lawyer
         return $izraz->fetchAll();
     }
 
+    public static function read($id)
+    {
+        $veza = DB::getInstance();
+        $izraz = $veza->prepare("
+        
+        select * from lawyer where lawyer_id=:lawyer
+        
+        ");
+        $izraz->execute(['lawyer'=>$id]);
+        return $izraz->fetch(PDO::FETCH_ASSOC);
+
+    }
+
+
+
     public static function novi()
     {
         $veza = DB::getInstance();
@@ -23,18 +38,6 @@ class Lawyer
     }
 
 
-    public static function read($id)
-    {
-        $veza = DB::getInstance();
-        $izraz = $veza->prepare("
-        
-        select * from lawyer where lawyer_id=:lawyer
-        
-        ");
-        $izraz->execute(['lawyer'=>$id]);
-        return $izraz->fetch(PDO::FETCH_ASSOC);
-
-    }
 
     public static function promjeni($id)
     {   

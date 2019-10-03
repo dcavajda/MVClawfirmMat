@@ -8,15 +8,12 @@ return [
 "baza"=>"morfej_lawfirm",
 "korisnik"=>"morfej_dcavajda",
 "lozinka"=>"dcavajda"
-
     ],
-    "stavakaPoStranici"=>6
+    "stavakaPoStranici"=>24
     
 ];
+
 //"server"=>"localhost",
 //"baza"=>"lawfirm",
 //"korisnik"=>"edunova",
 //"lozinka"=>"edunova"
-
-
-
