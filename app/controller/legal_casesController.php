@@ -17,7 +17,12 @@ class Legal_casesController extends Controller
 
     public function pripremaNovi()
     {
-        $this->view->render("privatno/legal_cases/novi");
+        $this->view->render("privatno/legal_cases/novi",
+        ["clients"=>Client::getClients(),
+        "lawyers"=>Lawyer::getLawyers()]);
+
+        
+        
     }
 
 
@@ -37,9 +42,16 @@ class Legal_casesController extends Controller
 
 
     public function pripremaPromjeni($id)
+    
     {
-        App::setParams(Legal_case::read($id));
-        $this->view->render("privatno/legal_cases/promjeni", ['id'=>$id]);
+        $legal_case = Legal_case::read($id);  
+        $legal_case["case_date_start"] = date("c",strtotime($legal_case["case_date_start"]));
+        App::setParams($legal_case);
+
+       $this->view->render("privatno/legal_cases/promjeni", 
+       ['id'=>$id,
+       "clients"=>Client::getClients(),
+       "lawyers"=>Lawyer::getLawyers()]);
     }
 
 
@@ -68,57 +80,8 @@ class Legal_casesController extends Controller
 
     private function kontrole()
     {
-        if(!$this->kontrolaLegal_case_code()){
-            return;
-        }
-        
-        if(!$this->kontrolaCase_date_start()){
-            return;
-        }
-
-        if(!$this->kontrolaCase_date_end()){
-            return;
-        }
-
-        
-
-    return true;
+        return true;
     }
-
-    private function kontrolaLegal_case_code()
-    {
-
-        if(trim(App::param('legal_case_code'))===''){
-            $this->greska('legal_case_code','must add Legal case code');
-            return false;
-        }
-    
-        
-    return true;
-    }
-
-    private function kontrolaCase_date_start()
-    {
-
-
-        if(trim(App::param('case_date_start'))===''){
-            $this->greska('case_date_start','must add date');
-            return false;
-       }
-       
-
-       return true;
-    }   
-    
-    private function kontrolaCase_date_end()
-    {
-       if(trim(App::param('case_date_end'))===''){
-        $this->greska('case_date_end','must add date');
-        return false;
-        }
-
-       
-    }   
 
 
 

@@ -51,5 +51,15 @@ class Utility
     return ob_get_clean();
     }
 
+    public static function base64Image()
+    {
+        sleep(1);
+        $ch = curl_init ("https://thispersondoesnotexist.com/image");
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_BINARYTRANSFER,1);
+        $raw=curl_exec($ch);
+        return 'data:image/jpeg;base64,' . base64_encode($raw);
+    }
 
 }

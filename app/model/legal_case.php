@@ -15,7 +15,7 @@ class Legal_case
         on a.lawyer=b.lawyer_id
         inner join client c
         on a.client=c.client_id
-
+        
         "
         );
         $izraz->execute();
@@ -27,15 +27,8 @@ class Legal_case
     {
         $veza = DB::getInstance();
         $izraz = $veza->prepare("
-        select
-        concat(c.firstname, ' ',c.lastname) as client,
- 		a.legal_case_code, a.case_date_start, a.case_date_end,		
-        concat(b.firstname, ' ', b.lastname) as lawyer
-        from legal_case a inner join lawyer b
-        on a.lawyer=b.lawyer_id
-        inner join client c
-        on a.client=c.client_id
-        where legal_case_id=:legl_case
+        
+        select * from legal_case where legal_case=:legal_case_id
         ");
         $izraz->execute(['legal_case'=>$id]);
         return $izraz->fetch(PDO::FETCH_ASSOC);
@@ -49,7 +42,7 @@ class Legal_case
         $izraz = $veza->prepare("
         
         insert into legal_casase values
-        (null,:legal_case_code,:case_date_start,:case_date_end)
+        (null,:client,:legal_case_code,:case_date_start,:case_date_end,:lawyer)
         
         ");
         $izraz->execute($_POST);
@@ -61,9 +54,11 @@ class Legal_case
         $izraz = $veza->prepare("
         
         update legal_case set
+        client=:client,
         legal_case_code=:legal_case_code,
         case_date_start=:case_date_start,
-        case_date_end=:case_date_end
+        case_date_end=:case_date_end,
+        lawyer=:lawyer,
         where legal_case_id=:legal_case_id
         
         ");
