@@ -43,7 +43,7 @@ class Legal_casesController extends Controller
     public function pripremaPromjeni($id)
     
     {
-        $legal_case = Legal_Case::read($id);  
+        $legal_case = Legal_case::read($id);  
         $legal_case["case_date_start"] = date("c",strtotime($legal_case["case_date_start"]));
         App::setParams($legal_case);
 
@@ -68,7 +68,7 @@ class Legal_casesController extends Controller
         if(!$this->kontrole()){
             return;
         } 
-         Legal_Case::promjeni($id);
+         Legal_case::promjeni($id);
          $this->index();
     }
 
@@ -76,7 +76,7 @@ class Legal_casesController extends Controller
 
     public function brisanje($id)
     {  
-       Legal_Case::brisi($id);
+       Legal_case::brisi($id);
        $this->index();
     }
 
