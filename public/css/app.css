@@ -24,7 +24,7 @@ legend {
     transform:scale(1.05);
 }
 
-#program
-{
-    min-height: 400px;
-}
+#program{
+    min-height: 455px;
+    background-color: azure;
+  }

@@ -34,7 +34,7 @@ class Legal_casesController extends Controller
       if(!$this->kontrole()){
           return;
       }
-       Legal_Case::novi();
+       Legal_case::novi();
        $this->index();
     }
 
