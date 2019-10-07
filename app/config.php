@@ -4,11 +4,11 @@ return [
     "nazivApp" => "Law office",
     "dev"=> true,
     "db" => [
+
 "server"=>"localhost",
 "baza"=>"lawfirm",
 "korisnik"=>"edunova",
 "lozinka"=>"edunova"
-
 
     ],
     "stavakaPoStranici"=>24
@@ -20,3 +20,4 @@ return [
 "korisnik"=>"morfej_dcavajda",
 "lozinka"=>"dcavajda"
 */
+

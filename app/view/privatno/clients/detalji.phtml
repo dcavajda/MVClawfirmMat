@@ -1,18 +1,22 @@
-<fieldset class="fieldset">
-    <legend>Popunite tražene podatke</legend>
+<div class="row">
+  <div class="col l8 offset-l2 s12 ">
+    <fieldset class="fieldset">
+        <legend>Popunite tražene podatke</legend>
 
-        <?php echo Utility::inputText(
-         isset($greska) ? $greska : null,'firstname','firstname');?>
-        <br />
-        <?php echo Utility::inputText(
-          isset($greska) ? $greska : null,'lastname','lastname');?>
-        <br />
-        <?php echo Utility::inputText(
-          isset($greska) ? $greska : null,'IBAN','IBAN');?>
-        <br />
-         <?php echo Utility::inputText(
-         isset($greska) ? $greska : null,'OIB','OIB');?>
-</fieldset>
-         <br />
+            <?php echo Utility::inputText(
+            isset($greska) ? $greska : null,'firstname','firstname');?>
+            <br />
+            <?php echo Utility::inputText(
+              isset($greska) ? $greska : null,'lastname','lastname');?>
+            <br />
+            <?php echo Utility::inputText(
+              isset($greska) ? $greska : null,'IBAN','IBAN');?>
+            <br />
+            <?php echo Utility::inputText(
+            isset($greska) ? $greska : null,'OIB','OIB');?>
+            <br/>
+    </fieldset>
+</div>
+</div>        
 
 

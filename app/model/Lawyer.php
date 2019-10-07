@@ -25,13 +25,16 @@ class Lawyer
 
 
 
+
     public static function novi()
     {
         $veza = DB::getInstance();
         $izraz = $veza->prepare("
         
-        insert into lawyer values
-        (null,:firstname,:lastname,:OIB,:IBAN)
+        insert into lawyer
+        (lawyer_id, firstname, lastname, IBAN, OIB, opis)
+        values
+        (null, :firstname, :lastname, :IBAN, :OIB, :opis)
         
         ");
         $izraz->execute($_POST);
@@ -48,7 +51,8 @@ class Lawyer
         firstname=:firstname,
         lastname=:lastname,
         OIB=:OIB,
-        IBAN=:IBAN
+        IBAN=:IBAN,
+        opis=:opis
         where lawyer_id=:lawyer_id
         
         ");

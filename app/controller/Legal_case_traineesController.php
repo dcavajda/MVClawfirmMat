@@ -17,7 +17,7 @@ class Legal_case_traineesController extends Controller
 
     public function pripremaNovi()
     {
-        $this->view->render("privatno/legal_case_trainees/novi",
+        $this->view->render("privatno/legal_case_trainees/novi"
         );
 
 

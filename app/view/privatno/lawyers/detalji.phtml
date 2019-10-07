@@ -1,16 +1,24 @@
-<fieldset class="fieldset">
-    <legend>Popunite tražene podatke</legend>
+<div class="row">
+  <div class="col l8 offset-l2 s12 ">
+      <fieldset class="fieldset">
 
-        <?php echo Utility::inputText(
-         isset($greska) ? $greska : null,'firstname','firstname');?>
-        <br />
-        <?php echo Utility::inputText(
-          isset($greska) ? $greska : null,'lastname','lastname');?>
-        <br />
-        <?php echo Utility::inputText(
-          isset($greska) ? $greska : null,'OIB','OIB');?>
-        <br />
-         <?php echo Utility::inputText(
-         isset($greska) ? $greska : null,'IBAN','IBAN');?>
-</fieldset>
-<br />
+          <legend>Popunite tražene podatke</legend>
+
+              <?php echo Utility::inputText(
+              isset($greska) ? $greska : null,'firstname','firstname');?>
+              <br />
+              <?php echo Utility::inputText(
+                isset($greska) ? $greska : null,'lastname','lastname');?>
+              <br />
+              <?php echo Utility::inputText(
+                isset($greska) ? $greska : null,'OIB','OIB');?>
+              <br />
+              <?php echo Utility::inputText(
+              isset($greska) ? $greska : null,'IBAN','IBAN');?>
+              <br />
+            
+      <textarea class="ckeditor" name="opis"><?php echo App::param('opis') ?></textarea>
+      </fieldset>
+     
+  </div>
+</div>

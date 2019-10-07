@@ -32,7 +32,8 @@ lawyer_id int not null primary key auto_increment,
 firstname varchar (50),
 lastname varchar(50),
 IBAN varchar (32),
-OIB char(11)
+OIB char(11),
+opis text,
 );
 create table client (
 client_id int not null primary key auto_increment,

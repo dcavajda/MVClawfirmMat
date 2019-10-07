@@ -68,15 +68,15 @@ $(document).ready(function(){
       <ul class="sidenav" id="mobile-nav">
           <li>
           <?php if(isset($_SESSION["autoriziran"])): ?>
-            <a href="<?php echo App::config("url") ?>index/logout">Odjava
+            <a href="<?php echo App::config("url") ?>index/logout">Log out
             <?php echo $_SESSION["autoriziran"]->firstnamelastname;?></a>
           <?php else:?>
-            <a href="<?php echo App::config("url") ?>index/login">Prijava</a>
+            <a href="<?php echo App::config("url") ?>index/login">Log in</a>
           <?php endif;?>
           </li>
           <?php if(isset($_SESSION["autoriziran"])): ?>
             <li <?php echo Utility::active('/index/nadzornaPloca'); ?>>
-              <a href="<?php echo App::config("url") ?>index/nadzornaPloca">Nadzorna ploča</a>
+              <a href="<?php echo App::config("url") ?>index/nadzornaPloca">Control room</a>
             </li>
             <li <?php echo Utility::active('/lawyers/index'); ?>>
               <a href="<?php echo App::config("url") ?>lawyers/index">Lawyers</a>
