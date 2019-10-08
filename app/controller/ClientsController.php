@@ -1,10 +1,11 @@
 <?php
 
-class ClientsController extends Controller
+class ClientsController extends UlogaOperater
 {
     private $viewGreska="";
     private $id=0;
 
+    
     public function index($stranica=1)
     {  
 

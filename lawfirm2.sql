@@ -12,13 +12,19 @@ operater_id int not null primary key auto_increment,
 firstname varchar (50),
 lastname varchar (50),
 email varchar (50),
-password varchar (60)
+password varchar (60),
+uloga varchar (20)
 );
 INSERT INTO operater
 (firstname, lastname, email, password)
 VALUES
-('Damir', 'Čavajda', 'dcavajda@edunova.hr', '$2y$12$Lt6Q93g3wRpalZ3TSD8Pi.IrcywISe7ctwSFCYMptjN8pRuIoFM72');
- 
+('Damir', 'Čavajda', 'dcavajda@edunova.hr', '$2y$12$Lt6Q93g3wRpalZ3TSD8Pi.IrcywISe7ctwSFCYMptjN8pRuIoFM72', 'admin');
+
+insert into operater values 
+(null,'operater', 'edunova' 'oper@edunova.hr',
+'$2y$12$VR0bNVQMB05iablvXDUf9eP5rJd8/yeBPot3VTHSMOyuJMcfK7b6C',
+'oper');
+
 create table legal_case(
 legal_case_id int not null primary key auto_increment,
 lawyer int NOT NULL,

@@ -1,6 +1,6 @@
 <?php
 
-class Legal_traineesController extends Controller
+class Legal_traineesController extends UlogaOperater
 {
 
     private $viewGreska="";

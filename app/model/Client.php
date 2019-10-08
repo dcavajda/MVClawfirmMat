@@ -2,11 +2,16 @@
 
 class Client
 {
-    public static function getClients($stranica)
+    public static function getClients($stranica=0)
     {
 
-        $sps = App::config("stavakaPoStranici");
-        $odKuda=($stranica -1) * $sps;
+        if($stranica>0){
+            $sps = App::config("stavakaPoStranici");
+            $odKuda=($stranica -1) * $sps;
+            $limit = "limit " . $odKuda . ", " . $sps;
+        }else{
+            $limit="";
+        }
         
         $veza = DB::getInstance();
         $izraz = $veza->prepare("
@@ -14,11 +19,10 @@ class Client
         from client 
         where concat(firstname,lastname,ifnull(OIB,'')) like :uvjet
         order by firstname
-        limit
-        "
         
 
-        . $odKuda . ', ' . $sps);
+        " . $limit
+        );
         $izraz->execute(["uvjet"=>"%" . App::param("uvjet") . "%"]);
         return $izraz->fetchAll();
 
@@ -61,6 +65,7 @@ class Client
         $izraz->execute($_POST);
     }
 
+    
 
     public static function promjeni($id)
     {   
