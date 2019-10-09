@@ -81,6 +81,13 @@ class ClientsController extends UlogaOperater
 
     public function brisanje($id)
     {  
+
+        
+        if(!Client::isDeletable($id)){
+            $this->index();
+            return;
+        }
+
        Client::brisi($id);
        $this->index();
     }
@@ -174,6 +181,7 @@ class ClientsController extends UlogaOperater
          'id'=>$this->id
         ]);
     }
+
 
 
 

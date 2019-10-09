@@ -98,6 +98,18 @@ class Client
         $izraz->execute(['client_id'=>$id]);
     }
   
+    public static function isDeletable($id)
+    {
+        $veza = DB::getInstance();
+        $izraz = $veza->prepare("
+        
+        select count(legal_case_id) from legal_case where client=:client
+        ");
+
+        $izraz->execute(['client'=>$id]);
+        $ukupno = $izraz->fetchColumn();
+        return $ukupno==0;
+    }
 
 
     public static function ukupnoStranica()

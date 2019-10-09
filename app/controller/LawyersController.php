@@ -61,6 +61,12 @@ class LawyersController extends UlogaOperater
 
     public function brisanje($id)
     {  
+        
+        if(!Lawyer::isDeletable($id)){
+            $this->index();
+            return;
+        }
+
        Lawyer::brisi($id);
        $this->index();
     }

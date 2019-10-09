@@ -73,5 +73,20 @@ class Lawyer
         $izraz->execute(['lawyer_id'=>$id]);
     }
 
+    public static function isDeletable($id)
+    {
+        $veza = DB::getInstance();
+        $izraz = $veza->prepare("
+        
+        select count(legal_case_id) from legal_case where lawyer=:lawyer
+        
+        ");
+        $izraz->execute(['lawyer'=>$id]);
+        $ukupno = $izraz->fetchColumn();
+        return $ukupno==0;
+
+
+    }
+
 
 }

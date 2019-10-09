@@ -21,19 +21,23 @@ class="btn btn-block waves-effect waves-light">
                     </ul>
 
                       <div>
-                    
+                    <?php if($lawyer->ukupno==0): ?>
                       <a title="Obriši <?php echo $lawyer->lawyer_id ?>" 
-                      onclick="return confirm('Sigurno obrisati <?php echo $lawyer->lawyer_id ?>?');"
-                      href="<?php 
-                      echo App::config("url") 
-                      ?>lawyers/brisanje/<?php echo $lawyer->lawyer_id ?>">
-                      
-                      <div class="btn btn-block btn-large red accent-2">Delete lawyer</div>
+                        onclick="return confirm('Sigurno obrisati <?php echo $lawyer->lawyer_id ?>?');"
+                        href="<?php 
+                        echo App::config("url") 
+                        ?>lawyers/brisanje/<?php echo $lawyer->lawyer_id ?>">
+                        <div class="btn btn-block btn-large red accent-2">Delete lawyer</div>
                       </a>
+                    <?php else:?>
+                        <i title="can't delete because it's on legal case" 
+                        class="btn btn-block btn-large black accent-2""></i>
+                    <?php endif;?>
+
                       <a title="promjeni <?php echo $lawyer->firstname ?>" 
-                      href="<?php echo App::config("url")?>lawyers/pripremaPromjeni/
-                      <?php echo $lawyer->lawyer_id ?>">
-                      <div class="btn btn-block btn-large yellow accent-4">Change information</div>
+                        href="<?php echo App::config("url")?>lawyers/pripremaPromjeni/
+                        <?php echo $lawyer->lawyer_id ?>">
+                        <div class="btn btn-block btn-large yellow accent-4">Change information</div>
                       </a>
                          
                   </div>

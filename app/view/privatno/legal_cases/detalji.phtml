@@ -10,37 +10,34 @@
                     <option           
                     <?php echo App::param("client")==$client->client_id ? 'selected="selected"' : ''; ?>
                     value="<?php echo $client->client_id; ?>">
-                        <?php echo $client->client; ?>
+                        <?php echo $client->firstnamelastname; ?>
                     </option>
             <?php endforeach; ?>
             </select>  
 
+            <?php echo Utility::inputText(
+            isset($greska) ? $greska : null,'legal_case_code','legal_case_code');?>
+
+            <label for="case_date_start">case date start</label>
+            <input type="datetime-local" name="case_date_start" id="case_date_start" 
+            value="<?php echo App::param("case_date_start") ?>"/>
+
+            <label for="case_date_end">Case date end</label>
+            <input type="datetime-local" name="case_date_end" id="case_date_end" 
+            value="<?php echo App::param("case_date_end") ?>"/>
+
+            
             <label for="">Lawyer</label>
             <select name="lawyer" id="lawyer">
                 <option value="0">choose lawyer</option>
                 <?php foreach($lawyers as $lawyer): ?>
-                    <option             
-                    <?php echo App::param("lawyer")==$lawyer->lawyer_id ? 'selected="selected"' : ''; ?>           
+                    <option    
+                    <?php echo App::param("lawyer")==$lawyer->lawyer_id ? 'selected="selected"' : ''; ?> 
                     value="<?php echo $lawyer->lawyer_id; ?>">
                         <?php echo $lawyer->firstnamelastname; ?>
                     </option>
             <?php endforeach; ?>
             </select>
-
-
-            <label for="legal_case_start">Case_date_start</label>
-            <input type="datetime-local" name="legal_case_start" id="legal_case_start" 
-            value="<?php echo App::param("legal_case_start") ?>"/>
-
-
-            <label for="legal_case_end">Case_date_end</label>
-            <input type="datetime-local" name="legal_case_end" id="legal_case_end" 
-            value="<?php echo App::param("legal_case_end") ?>"/>
-
-
-            <?php echo Utility::inputText(
-            isset($greska) ? $greska : null,'legal_case_code','legal_case_code');?>
-
 
         </fieldset>
 </div>

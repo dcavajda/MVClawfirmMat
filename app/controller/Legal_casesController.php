@@ -17,7 +17,8 @@ class Legal_casesController extends UlogaOperater
     public function pripremaNovi()
     {
         $this->view->render("privatno/legal_cases/novi",
-        ["lawyers"=>Lawyer::getLawyers()]
+        ["clients"=>Client::getClients(),
+        "lawyers"=>Lawyer::getLawyers()]
         );
 
 //kada ubacim da mi prikaze client dobijem eror
@@ -43,18 +44,21 @@ class Legal_casesController extends UlogaOperater
     public function pripremaPromjeni($id)
     
     {
-        $legal_case = Legal_case::read($id);  
-        $legal_case["case_date_start"] = date("c",strtotime($legal_case["case_date_start"]));
-        App::setParams($legal_case);
+        $legal_case = Legal_case::read($id);
+        if($legal_case["case_date_start"]!= null){
+            $legal_case["case_date_start"] = date("Y-m-d\TH:i",strtotime($legal_case["case_date_start"]));
+        }
 
+        $legal_case = Legal_case::read($id);
+        if($legal_case["case_date_end"]!= null){
+            $legal_case["case_date_end"] = date("Y-m-d\TH:i",strtotime($legal_case["case_date_end"]));
+        }
+
+      App::setParams($legal_case);
        $this->view->render("privatno/legal_cases/promjeni", 
        ['id'=>$id,
+       "clients"=>Client::getClients(),
        "lawyers"=>Lawyer::getLawyers()]);
-
-//kada ubacim da mi prikaze client dobijem eror
-        //["clients"=>Client::getClients(),
-        //"lawyers"=>Lawyer::getLawyers()]
-
 
     }
 
@@ -76,16 +80,22 @@ class Legal_casesController extends UlogaOperater
 
     public function brisanje($id)
     {  
+        if(!Legal_case::isDeletable($id)){
+            $this->index();
+            return;
+        }
+
        Legal_case::brisi($id);
        $this->index();
     }
+
+
 
 
     private function kontrole()
     {
         return true;
     }
-
 
 
     private function greska($polje,$poruka){

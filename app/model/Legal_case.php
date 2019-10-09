@@ -8,9 +8,9 @@ class Legal_case
         $veza = DB::getInstance();
         $izraz = $veza->prepare("
         select    
-        concat(c.client_id,c.firstname, ' ',c.lastname) as client,
+        concat(c.firstname, ' ',c.lastname) as client,
         a.legal_case_id, a.legal_case_code, a.case_date_start, a.case_date_end,
-        concat(b.lawyer_id,b.firstname, ' ', b.lastname) as lawyer
+        concat(b.firstname, ' ', b.lastname) as lawyer
         from legal_case a inner join lawyer b
         on a.lawyer=b.lawyer_id
         inner join client c
@@ -79,6 +79,7 @@ class Legal_case
 
 
 
+
     public static function brisi($id)
     {
         $veza = DB::getInstance();
@@ -88,6 +89,20 @@ class Legal_case
         
         ");
         $izraz->execute(['legal_case_id'=>$id]);
+    }
+
+    public static function isDeletable($id)
+    {
+        $veza = DB::getInstance();
+        $izraz = $veza->prepare("
+        
+        select count(lawyer) from lawyer where legal_case=:legal_case
+        
+        ");
+        $izraz->execute(['legal_case'=>$id]);
+        $ukupno = $izraz->fetchColumn();
+        return $ukupno==0;
+
     }
 
 
