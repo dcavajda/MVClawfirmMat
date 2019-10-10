@@ -40,7 +40,9 @@ class LawyersController extends UlogaOperater
     public function pripremaPromjeni($id)
     {
         App::setParams(Lawyer::read($id));
-        $this->view->render("privatno/lawyers/promjeni", ['id'=>$id]);
+        $this->view->render("privatno/lawyers/promjeni", 
+        ['id'=>$id,
+        "jsLib"=>'<script src="' . App::config("url") . 'public/js/vendor/ckeditor/ckeditor.js"></script>']);
     }
 
 

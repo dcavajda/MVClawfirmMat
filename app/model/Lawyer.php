@@ -25,7 +25,7 @@ class Lawyer
         $veza = DB::getInstance();
         $izraz = $veza->prepare("
         
-        select * from lawyer where lawyer_id=:lawyer
+        select lawyer_id, firstname, lastname, IBAN, OIB, opis from lawyer where lawyer_id=:lawyer
         
         ");
         $izraz->execute(['lawyer'=>$id]);

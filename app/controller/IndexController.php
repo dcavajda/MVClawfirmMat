@@ -31,6 +31,11 @@ class IndexController
         $this->view->render("kontakt");
     }
 
+    public function js()
+    {
+        $this->view->render("javascript");
+    }
+
     public function login()
     {
         $this->view->render("login");

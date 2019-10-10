@@ -1,35 +1,39 @@
+
 <div class="row">
   <div class="col l8 offset-l2 s12 ">
         <fieldset class="fieldset">
             <legend>Popunite tražene podatke</legend>
-
-            <label for="client">Client</label>
-            <select name="client" id="client">
-                <option value="0">Choose client</option>
-                <?php foreach($clients as $client): ?>
-                    <option           
-                    <?php echo App::param("client")==$client->client_id ? 'selected="selected"' : ''; ?>
-                    value="<?php echo $client->client_id; ?>">
-                        <?php echo $client->firstnamelastname; ?>
-                    </option>
-            <?php endforeach; ?>
-            </select>  
-
+            
+                <label for="client">Client</label>
+                <select  class="browser-default" name="client" id="client">
+                    <option value="0">Choose Client</option>
+                    <?php foreach($clients as $client): ?>
+                        <option           
+                        <?php echo App::param("client")==$client->client_id ? 'selected="selected"' : ''; ?>
+                        value="<?php echo $client->client_id; ?>">
+                            <?php echo $client->firstnamelastname; ?>
+                        </option>
+                <?php endforeach; ?>
+                </select>  
+           
             <?php echo Utility::inputText(
             isset($greska) ? $greska : null,'legal_case_code','legal_case_code');?>
 
-            <label for="case_date_start">case date start</label>
+
+            <label for="case_date_start">Case date start</label>
             <input type="datetime-local" name="case_date_start" id="case_date_start" 
             value="<?php echo App::param("case_date_start") ?>"/>
+
 
             <label for="case_date_end">Case date end</label>
             <input type="datetime-local" name="case_date_end" id="case_date_end" 
             value="<?php echo App::param("case_date_end") ?>"/>
 
             
+
             <label for="">Lawyer</label>
-            <select name="lawyer" id="lawyer">
-                <option value="0">choose lawyer</option>
+            <select class="browser-default" name="lawyer" id="lawyer">
+                <option value="0">Choose Lawyer</option>
                 <?php foreach($lawyers as $lawyer): ?>
                     <option    
                     <?php echo App::param("lawyer")==$lawyer->lawyer_id ? 'selected="selected"' : ''; ?> 
@@ -40,5 +44,4 @@
             </select>
 
         </fieldset>
-</div>
 </div>

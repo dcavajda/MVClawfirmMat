@@ -32,8 +32,6 @@ class Client
     }
 
 
-
-
     /* NEMOGU
     public static function getClients()
     {
@@ -64,8 +62,10 @@ class Client
         $veza = DB::getInstance();
         $izraz = $veza->prepare("
         
-        insert into client values
-        (null,:firstname,:lastname,:OIB,:IBAN)
+        insert into client 
+        (client_id, firstname, lastname, IBAN, OIB )
+        values
+        (null,:firstname,:lastname,:IBAN,:OIB)
         
         ");
         $izraz->execute($_POST);

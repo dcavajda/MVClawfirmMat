@@ -7,7 +7,7 @@ class Legal_case
        
         $veza = DB::getInstance();
         $izraz = $veza->prepare("
-        select    
+        select   
         concat(c.firstname, ' ',c.lastname) as client,
         a.legal_case_id, a.legal_case_code, a.case_date_start, a.case_date_end,
         concat(b.firstname, ' ', b.lastname) as lawyer      
@@ -25,12 +25,12 @@ class Legal_case
         return $izraz->fetchAll();
     }
 
-    
+  
     public static function getClients()
     {
         $veza = DB::getInstance();
         $izraz = $veza->prepare("
-        select * from client
+        select client_id, firstname, lastname, IBAN, OIB from client
         ");
         $izraz->execute();
         return $izraz->fetchAll();
@@ -42,7 +42,8 @@ class Legal_case
         $veza = DB::getInstance();
         $izraz = $veza->prepare("
         
-        select * from legal_case where legal_case_id=:legal_case
+        select legal_case_id, client, legal_case_code, case_date_start, case_date_end, lawyer
+         from legal_case where legal_case_id=:legal_case
         ");
         $izraz->execute(['legal_case'=>$id]);
         return $izraz->fetch(PDO::FETCH_ASSOC);
@@ -55,12 +56,15 @@ class Legal_case
         $veza = DB::getInstance();
         $izraz = $veza->prepare("
         
-        insert into legal_case values
+        insert into legal_case 
+        (legal_case_id, client, legal_case_code, case_date_start, case_date_end, lawyer)
+        values
         (null,:client,:legal_case_code,:case_date_start,:case_date_end,:lawyer)
         
         ");
         $izraz->execute($_POST);
     }
+
 
     public static function promjeni($id)
     {   
@@ -72,7 +76,7 @@ class Legal_case
         legal_case_code=:legal_case_code,
         case_date_start=:case_date_start,
         case_date_end=:case_date_end,
-        lawyer=:lawyer,
+        lawyer=:lawyer
         where legal_case_id=:legal_case_id
         
         ");

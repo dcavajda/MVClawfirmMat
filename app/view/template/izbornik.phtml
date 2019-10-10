@@ -1,4 +1,4 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script> 
 $(document).ready(function(){
@@ -32,6 +32,9 @@ $(document).ready(function(){
           <li <?php echo Utility::active('/index/era'); ?>>
                 <a href="<?php echo App::config("url") ?>index/era">ERA</a>
           </li>
+          <li <?php echo Utility::active('/index/js'); ?>>
+        <a href="<?php echo App::config("url") ?>index/js">JS</a>
+           </li> 
           <?php if(isset($_SESSION["autoriziran"])): ?>
             <?php if($_SESSION["autoriziran"]->uloga==="oper"): ?>
               <li>
@@ -123,7 +126,6 @@ $(document).ready(function(){
           <?php endif;?>
           
       </ul>
-    
   </nav>
 </body>
 <br/>
