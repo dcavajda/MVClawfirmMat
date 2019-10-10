@@ -29,7 +29,9 @@ $(document).ready(function(){
           <li <?php echo Utility::active('/index/nadzornaPloca'); ?>>
                 <a href="<?php echo App::config("url") ?>index/nadzornaPloca">Control room</a>
           </li>
-
+          <li <?php echo Utility::active('/index/era'); ?>>
+                <a href="<?php echo App::config("url") ?>index/era">ERA</a>
+          </li>
           <?php if(isset($_SESSION["autoriziran"])): ?>
             <?php if($_SESSION["autoriziran"]->uloga==="oper"): ?>
               <li>
@@ -54,9 +56,7 @@ $(document).ready(function(){
               <li <?php echo Utility::active('/operater/index'); ?>>
                 <a href="<?php echo App::config("url") ?>operater/index">Operateri</a>
               </li>
-              <li <?php echo Utility::active('/index/era'); ?>>
-                <a href="<?php echo App::config("url") ?>index/era">ERA</a>
-              </li>
+              
             <?php endif;?>
           <?php endif;?>
           <li>

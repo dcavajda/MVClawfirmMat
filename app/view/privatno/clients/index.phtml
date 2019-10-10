@@ -37,28 +37,29 @@
                     <li>IBAN: <?php echo $client->IBAN?></li>
                     <li>OIB: <?php echo $client->OIB?></li>
                     </ul>
-                  <div>    
-                  
-                  <?php if ($client->ukupno==0): ?>
-                    <a title="Obriši <?php echo $client->client_id ?>" 
-                      onclick="return confirm('Sigurno obrisati <?php echo $client->client_id ?>?');"
-                      href="<?php 
-                      echo App::config("url") 
-                      ?>clients/brisanje/<?php echo $client->client_id ?>">
-                      <div class="btn btn-block btn-large red accent-2">Delete client</div>
-                      <?php else:?>
-                      <i title="you can't delete it because it's on legal_case" 
-                      class="btn btn-block btn-large black accent-2">Delete client
-                    </a>
-                  <?php endif;?>
 
+                        <div>    
+                      <?php if ($client->ukupno==0): ?>
+                        <a title="Obriši <?php echo $client->client_id ?>" 
+                          onclick="return confirm('Sigurno obrisati <?php echo $client->client_id ?>?');"
+                          href="<?php 
+                          echo App::config("url") 
+                          ?>clients/brisanje/<?php echo $client->client_id ?>">
+                          <div class="btn btn-block btn-large red accent-2">Delete client</div>
+                        </a>
+                          <?php else:?>
+                          <i title="you can't delete it because it's on legal_case" 
+                          class="btn btn-block btn-large grey darken-2">Delete client</i>
+                        
+                      <?php endif;?>
 
-                    </a>
-                    <a title="promjeni <?php echo $client->firstname ?>" 
-                    href="<?php echo App::config("url")?>clients/pripremaPromjeni/
-                    <?php echo $client->client_id ?>">
-                    <div class="btn btn-block btn-large yellow accent-4">Change information</div>
-                    </a>
+                        
+                        <a title="promjeni <?php echo $client->firstname ?>" 
+                          href="<?php echo App::config("url")?>clients/pripremaPromjeni/
+                          <?php echo $client->client_id ?>">
+                          <div class="btn btn-block btn-large yellow accent-4">Change information</div>
+                        </a>
+
                   </div>
                 </div>
               </div>

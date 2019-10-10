@@ -10,11 +10,14 @@ class Legal_case
         select    
         concat(c.firstname, ' ',c.lastname) as client,
         a.legal_case_id, a.legal_case_code, a.case_date_start, a.case_date_end,
-        concat(b.firstname, ' ', b.lastname) as lawyer
-        from legal_case a inner join lawyer b
-        on a.lawyer=b.lawyer_id
-        inner join client c
-        on a.client=c.client_id
+        concat(b.firstname, ' ', b.lastname) as lawyer      
+        from legal_case a 
+        inner join lawyer b on a.lawyer=b.lawyer_id
+        inner join client c on a.client=c.client_id
+        group by
+        concat(c.firstname, ' ',c.lastname),
+        a.legal_case_id, a.legal_case_code, a.case_date_start, a.case_date_end,
+        concat(b.firstname, ' ', b.lastname)
         
         "
         );

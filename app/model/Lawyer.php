@@ -5,7 +5,17 @@ class Lawyer
     public static function getLawyers()
     {
         $veza = DB::getInstance();
-        $izraz = $veza->prepare("select * from lawyer");
+        $izraz = $veza->prepare("
+        select 
+        a.lawyer_id, a.firstname, a.lastname, a.IBAN, a.OIB, a.opis,
+        concat(a.firstname,' ',a.lastname) as firstnamelastname,
+        count(b.legal_case_id) as ukupno
+        from lawyer a left join legal_case b
+        on a.lawyer_id=b.lawyer
+        group by a.lawyer_id, a.firstname, a.lastname, a.IBAN, a.OIB, a.opis
+        order by a.firstname
+        
+        ");
         $izraz->execute();
         return $izraz->fetchAll();
     }

@@ -14,19 +14,25 @@ class Client
         }
         
         $veza = DB::getInstance();
-        $izraz = $veza->prepare("
-        select client_id, firstname, lastname, IBAN, OIB
-        from client 
+        $izraz = $veza->prepare(" select 
+        a.client_id, a.firstname, a.lastname, a.IBAN, a.OIB,
+        concat(a.firstname,' ',a.lastname) as firstnamelastname,
+        count(b.legal_case_id) as ukupno
+        from client a left join legal_case b
+        on a.client_id=b.client
         where concat(firstname,lastname,ifnull(OIB,'')) like :uvjet
+        group by a.client_id, a.firstname, a.lastname, a.IBAN, a.OIB
         order by firstname
         
-
         " . $limit
         );
         $izraz->execute(["uvjet"=>"%" . App::param("uvjet") . "%"]);
         return $izraz->fetchAll();
 
     }
+
+
+
 
     /* NEMOGU
     public static function getClients()
