@@ -1,24 +1,43 @@
 
-    <div class="row">
-        <div class="col l8 offset-l2 s12 ">
-            <div class="card center">
-                <div class="card-image ">
-                <img src="public\img\lawfirm2.jpg">
-                <span class="card-title">Welcome</span>
-                </div>
-                <div class="card-content">
-                <p>Since established in 1995, Law office offers a full range of legal advise and services
-    of highest business standards to domestic and international clients.
+<body style="background-color:Salmon;">
 
-    We focus our activities on legal consultancy in the fields of corporate & commercial law, 
-    M&A, real estate, capital markets, banking & finance, competition law, privatisation, 
-    project finance, telecommunications and media law, labor law, intellectual property and dispute resolution.
+    <div class="parallax-container">
+    <h2 class="header red-text text-darken-1 ">Welcome to Law office</h2>
+        <div class="parallax">
+        <img src="<?php echo App::config("url") ?>public\img\012.jpg" alt="" class="responsive-img">
+        </div> 
+    </div>
 
-    For additional information about our Office or in case of your interest for business cooperation, please contact us..</p>
+    <div class="col l10 offset-l3 s12 m7">
+        <div class="row">
+            <div class="col l10 offset-l1 s12 m7">
+            <div class="card horizontal">
+            <div class="card-image">
+                <img src="public\img\Ziff_20190213_069-1.jpg">
+            </div>
+            <div class="card-stacked">
+                <div class="card-content red lighten-3 z-depth-2">
+                <p style="font-family:courier">
+                <span class="white-text font-family:courier">
+            Since established in 1995, Law office offers a full range of legal advise and services
+            of highest business standards to domestic and international clients.
+            <br/>
+            We focus our activities on legal consultancy in the fields of corporate & commercial law, 
+            M&A, real estate, capital markets, banking & finance, competition law, privatisation, 
+            project finance, telecommunications and media law, labor law, intellectual property and dispute resolution.<br/>
+            For additional information about our Office or in case of your interest for business cooperation, please contact us...<span></p>
                 </div>
-                <div class="card-action">
-                <a href="app\view\kontakt.phtml">Contact us</a>
+                <div class="card-action center">
+                <a href="<?php echo App::config("url") ?>index/kontakt">Contact us</a>
+                <a href="<?php echo App::config("url") ?>index/onama">About us</a>
                 </div>
             </div>
             </div>
         </div>
+    </div>
+    <div class="parallax-container">
+        <div class="parallax">
+        <img src="<?php echo App::config("url") ?>public/img/lawfirm2.jpg" alt="" class="responsive-img">
+        </div> 
+    </div>
+</body>

@@ -17,7 +17,7 @@ class IndexController
     public function index()
     {
 
-        $this->view->render("index",["a"=>1,"b"=>["ime"=>"Pero"]]);
+        $this->view->render("index");
     }
 
     public function onama()

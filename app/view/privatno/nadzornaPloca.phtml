@@ -1,4 +1,21 @@
+<body style="background-color:Salmon;">
+
+    <div class="parallax-container">
+    <h4 class="header red-text text-darken-1 ">
+    Hello, now you are login in to Law office as:
+</h4>
+<li>
+            <?php if(isset($_SESSION["autoriziran"])): ?>
+              <a href="<?php echo App::config("url") ?>index/logout">Log out
+              <?php echo $_SESSION["autoriziran"]->firstnamelastname;?></a>
+            <?php else:?>
+              <a href="<?php echo App::config("url") ?>index/login">Log in</a>
+            <?php endif;?>
+          </li>  
+
+        <div class="parallax">
+        <img src="<?php echo App::config("url") ?>public\img\012.jpg" alt="" class="responsive-img">
+        </div> 
+    </div>
 
 
-
-Hello, logiran si

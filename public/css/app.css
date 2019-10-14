@@ -1,3 +1,7 @@
+.parallax-container {
+    height: 400px;
+}
+
 
 legend {
     margin:0 auto;
@@ -24,7 +28,3 @@ legend {
     transform:scale(1.05);
 }
 
-#program{
-    min-height: 455px;
-    background-color: azure;
-  }

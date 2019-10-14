@@ -46,12 +46,12 @@ class Legal_casesController extends UlogaOperater
     {
         $legal_case = Legal_case::read($id);
         if($legal_case["case_date_start"]!= null){
-            $legal_case["case_date_start"] = date("Y-m-d",strtotime($legal_case["case_date_start"])); 
+            $legal_case["case_date_start"] = date("Y-m-d\TH:i",strtotime($legal_case["case_date_start"])); 
         }
 
         $legal_case = Legal_case::read($id);
         if($legal_case["case_date_end"]!= null){
-            $legal_case["case_date_end"] = date("Y-m-d",strtotime($legal_case["case_date_end"]));
+            $legal_case["case_date_end"] = date("Y-m-d\TH:i",strtotime($legal_case["case_date_end"]));
         }
 
       App::setParams($legal_case);
@@ -80,10 +80,7 @@ class Legal_casesController extends UlogaOperater
 
     public function brisanje($id)
     {  
-        if(!Legal_case::isDeletable($id)){
-            $this->index();
-            return;
-        }
+      
 
        Legal_case::brisi($id);
        $this->index();
