@@ -4,23 +4,22 @@ return [
     "nazivApp" => "Law office",
     "dev"=> true,
     "db" => [
-
-	 "server"=>"localhost",
-     "baza"=>"lawfirm",
-     "korisnik"=>"edunova",
-     "lozinka"=>"edunova"
-
+	"server"=>"localhost",
+	"baza"=>"morfej_lawfirm",
+	"korisnik"=>"morfej_dcavajda",
+	"lozinka"=>"dcavajda"
+"server"=>
+	
     ],
     "stavakaPoStranici"=>24
     
 ];
 /*
-    	
-
- 	"server"=>"localhost",
-	"baza"=>"morfej_lawfirm",
-	"korisnik"=>"morfej_dcavajda",
-	"lozinka"=>"dcavajda"
+	"localhost",
+     "baza"=>"lawfirm",
+     "korisnik"=>"edunova",
+     "lozinka"=>"edunova"
+ 		
  
 */
 

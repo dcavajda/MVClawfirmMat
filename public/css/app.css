@@ -1,5 +1,5 @@
 .parallax-container {
-    height: 400px;
+    height: 200px;
 }
 
 
@@ -15,7 +15,7 @@ legend {
 
 #container
 {
-    margin-top:15px;
+    margin-top:20px;
 }
 .card-content {
     text-align: center; 
@@ -27,4 +27,5 @@ legend {
 .card:hover{
     transform:scale(1.05);
 }
+
 

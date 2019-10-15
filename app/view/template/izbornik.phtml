@@ -14,16 +14,20 @@
           </li>
           <li <?php echo Utility::active('/index/kontakt'); ?>>
             <a href="<?php echo App::config("url") ?>index/kontakt">Contact</a>
-          <li <?php echo Utility::active('/index/era'); ?>>
-                <a href="<?php echo App::config("url") ?>index/era">ERA</a>
-          </li>
+          
           <li <?php echo Utility::active('/index/js'); ?>>
         <a href="<?php echo App::config("url") ?>index/js">JS</a>
            </li> 
           <?php if(isset($_SESSION["autoriziran"])): ?>
             <?php if($_SESSION["autoriziran"]->uloga==="oper"): ?>
+              <li <?php echo Utility::active('/index/nadzornaPloca'); ?>>
+                    <a href="<?php echo App::config("url") ?>index/nadzornaPloca">Control room</a>
+              </li>
+              <li <?php echo Utility::active('/index/era'); ?>>
+                <a href="<?php echo App::config("url") ?>index/era">ERA</a>
+              </li>
               <li>
-                <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
+                <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Law firm</a>
                 <ul id='dropdown1' class='dropdown-content'>
                   <li <?php echo Utility::active('/lawyers/index'); ?>>
                     <a href="<?php echo App::config("url") ?>lawyers/index">Lawyers</a>
@@ -41,6 +45,9 @@
               </li>
             <?php endif;?>
             <?php if($_SESSION["autoriziran"]->uloga==="admin"): ?>
+              <li <?php echo Utility::active('/index/era'); ?>>
+                <a href="<?php echo App::config("url") ?>index/era">ERA</a>
+              </li>
               <li <?php echo Utility::active('/operater/index'); ?>>
                 <a href="<?php echo App::config("url") ?>operater/index">Operateri</a>
               </li>

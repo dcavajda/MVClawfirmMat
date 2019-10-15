@@ -169,8 +169,10 @@ class ClientsController extends UlogaOperater
             $this->greska('OIB','must add OIB');
             return false;
             }
+
     return true;
     }  
+
 
 
     private function greska($polje,$poruka){

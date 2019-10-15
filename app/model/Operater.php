@@ -1,11 +1,11 @@
 <?php
 
-class Legal_case_trainee
+class Operater
 {
-    public static function getLegal_case_trainees()
+    public static function getOperateri()
     {
         $veza = DB::getInstance();
-        $izraz = $veza->prepare("select * from legal_case_trainee");
+        $izraz = $veza->prepare("select operater_id, firstname ,lastname, email, uloga from operater");
         $izraz->execute();
         return $izraz->fetchAll();
     }
@@ -15,9 +15,9 @@ class Legal_case_trainee
         $veza = DB::getInstance();
         $izraz = $veza->prepare("
         
-        select * from legal_case_trainee where legal_case_trainee_id=:legal_case_trainee
+        select operater_id, firstname ,lastname, email, uloga from operater where operater_id=:operater
         ");
-        $izraz->execute(['legal_case_trainee'=>$id]);
+        $izraz->execute(['operater'=>$id]);
         return $izraz->fetch(PDO::FETCH_ASSOC);
 
     }
@@ -27,11 +27,14 @@ class Legal_case_trainee
     {
         $veza = DB::getInstance();
         $izraz = $veza->prepare("
-        
-        insert into legal_case_trainee values
-        (legal_case,:legal_trainee)
+
+        insert into operater 
+        (operater_id, firstname, lastname, email, uloga)
+        values
+        (null, :firstname, :lastname, :email, :uloga)
         
         ");
+        
         $izraz->execute($_POST);
     }
 
@@ -40,13 +43,15 @@ class Legal_case_trainee
         $veza = DB::getInstance();
         $izraz = $veza->prepare("
         
-        update legal_case_trainee set
-        legal_case=:legal_case,
-        legal_trainee=:legal_trainee,
-        where legal_case_trainee_id=:legal_case_trainee_id
+        update operater set
+        firstname=:firstname,
+        lastname=:lastname,
+        email=:email,
+        uloga=:uloga
+        where operater_id=:operater_id
         
         ");
-        $_POST['legal_case_trainee_id']=$id;
+        $_POST['operater_id']=$id;
         $izraz->execute($_POST);
     }
 
@@ -57,10 +62,10 @@ class Legal_case_trainee
         $veza = DB::getInstance();
         $izraz = $veza->prepare("
         
-        delete from legal_case_trainee where legal_case_trainee_id=:legal_case_trainee_id
+        delete from operater where operater_id=:operater_id
         
         ");
-        $izraz->execute(['legal_case_trainee_id'=>$id]);
+        $izraz->execute(['operater_id'=>$id]);
     }
 
 

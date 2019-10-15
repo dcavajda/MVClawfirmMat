@@ -16,12 +16,12 @@ password varchar (60),
 uloga varchar (20)
 );
 INSERT INTO operater
-(firstname, lastname, email, password)
+(firstname, lastname, email, password,uloga)
 VALUES
 ('Damir', 'Čavajda', 'dcavajda@edunova.hr', '$2y$12$Lt6Q93g3wRpalZ3TSD8Pi.IrcywISe7ctwSFCYMptjN8pRuIoFM72', 'admin');
 
 insert into operater values 
-(null,'operater', 'edunova' 'oper@edunova.hr',
+(null,'operater', 'edunova', 'oper@edunova.hr',
 '$2y$12$VR0bNVQMB05iablvXDUf9eP5rJd8/yeBPot3VTHSMOyuJMcfK7b6C',
 'oper');
 
@@ -39,7 +39,7 @@ firstname varchar (50),
 lastname varchar(50),
 IBAN varchar (32),
 OIB char(11),
-opis text,
+opis text
 );
 create table client (
 client_id int not null primary key auto_increment,

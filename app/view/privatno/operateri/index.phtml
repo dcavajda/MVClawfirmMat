@@ -1,1 +1,51 @@
-Operateri
+
+<a href="<?php echo App::config("url") ?>operater/pripremaNovi" 
+class="btn btn-block waves-effect waves-light"">
+<i class="material-icons left">add_box</i> Add new operater</a>
+</a>
+
+<fieldset   class="fieldset">      
+  <table id="tablicaSmjerovi" >
+  <div>
+    <h5 class="center-align">Operteri in your office</h5>
+  </div>
+    <table id="tablicaSmjerovi"class=striped>
+    <thead>
+      <tr>
+        <th>firstname:</th>
+        <th>lastname:</th>
+        <th>email:</th>
+        <th>uloga:</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach($operateri as $operater): ?>
+        <tr>
+          <td><?php echo $operater->firstname?></td>
+          <td><?php echo $operater->lastname?></td>
+          <td><?php echo $operater->email?></td>
+          <td><?php echo $operater->uloga?></td>
+          <td>
+
+          <a title="promjeni <?php echo $operateri->operater ?>" 
+              href="<?php 
+              echo App::config("url") 
+              ?>operater/pripremaPromjeni/<?php echo $operater->operater_id ?>">
+              <i class="fas fa-edit fa-2x" style="color: orange"></i>
+          </a>
+
+
+            <a title="Obriši <?php echo $operater->operater_id ?>" 
+              onclick="return confirm('Sigurno obrisati <?php echo $operater->operater_id ?>?');"
+              href="<?php 
+              echo App::config("url") 
+              ?>operater/brisanje/<?php echo $operater->operater_id ?>">
+              <i class="fas fa-trash fa-2x" style="color: red"></i>
+              </a>
+
+          </td>
+        </tr>
+      <?php endforeach;?>
+    </tbody>
+  </table>
+</fieldset>

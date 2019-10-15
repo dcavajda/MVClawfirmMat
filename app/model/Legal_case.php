@@ -62,7 +62,17 @@ class Legal_case
         (null,:client,:legal_case_code,:case_date_start,:case_date_end,:lawyer)
         
         ");
-        $izraz->execute($_POST);
+        $izraz->bindParam("client",$_POST["client"]);
+        $izraz->bindParam("legal_case_code",$_POST["legal_case_code"]);
+        $izraz->bindParam("case_date_start",$_POST["case_date_start"]);
+        $izraz->bindParam("lawyer",$_POST["lawyer"]);
+        if($_POST["case_date_end"]==""){
+            $izraz->bindValue("case_date_end",null);
+        }else{
+            $izraz->bindParam("case_date_end",$_POST["case_date_end"]);
+        }
+        
+        $izraz->execute();
     }
 
 

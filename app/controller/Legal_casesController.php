@@ -46,12 +46,12 @@ class Legal_casesController extends UlogaOperater
     {
         $legal_case = Legal_case::read($id);
         if($legal_case["case_date_start"]!= null){
-            $legal_case["case_date_start"] = date("Y-m-d\TH:i",strtotime($legal_case["case_date_start"])); 
+            $legal_case["case_date_start"] = date("d. m. Y.",strtotime($legal_case["case_date_start"])); 
         }
-
+        
         $legal_case = Legal_case::read($id);
         if($legal_case["case_date_end"]!= null){
-            $legal_case["case_date_end"] = date("Y-m-d\TH:i",strtotime($legal_case["case_date_end"]));
+            $legal_case["case_date_end"] = date("d. m. Y.",strtotime($legal_case["case_date_end"]));
         }
 
       App::setParams($legal_case);
