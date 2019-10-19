@@ -5,7 +5,16 @@ class Legal_trainee
     public static function getLegal_trainees()
     {
         $veza = DB::getInstance();
-        $izraz = $veza->prepare("select * from legal_trainee");
+        $izraz = $veza->prepare("
+
+        select a.legal_trainee_id, a.firstname, a.lastname, a.IBAN, a.OIB, 
+        b.legal_case_id
+        from legal_trainee a
+        left join legal_case_trainee b on a.legal_trainee_id=b.legal_trainee_id
+        
+        
+
+        ");
         $izraz->execute();
         return $izraz->fetchAll();
     }
@@ -15,13 +24,49 @@ class Legal_trainee
         $veza = DB::getInstance();
         $izraz = $veza->prepare("
         
-        select * from legal_trainee where legal_trainee_id=:legal_trainee
+        select legal_trainee_id, firstname, lastname, IBAN, OIB from legal_trainee where legal_trainee_id=:legal_trainee
         
         ");
         $izraz->execute(['legal_trainee'=>$id]);
         return $izraz->fetch(PDO::FETCH_ASSOC);
 
     }
+
+    public static function getLegal_traineesNaLegal_cases($legal_case)
+    {
+       
+        $veza = DB::getInstance();
+        $izraz = $veza->prepare("
+        
+        select a.legal_trainee_id, a.firstname, a.lastname, a.IBAN, a.OIB, 
+        b.legal_case_id
+        from legal_trainee a
+        left join legal_case_trainee b on a.legal_trainee_id=b.legal_trainee_id
+
+        ");
+        $izraz->execute(["legal_case"=>$legal_case]);
+        return $izraz->fetchAll();
+    }
+
+    public static function getTraziLegal_trainees($uvjet)
+    {
+
+        $veza = DB::getInstance();
+        $izraz = $veza->prepare("
+        select a.legal_trainee_id, a.firstname, a.lastname, a.IBAN, a.OIB, 
+        b.legal_case_id
+        from legal_trainee a
+        left join legal_case_trainee b on a.legal_trainee_id=b.legal_trainee_id    
+        where concat(a.firstname, a.lastname) like :uvjet
+        " 
+    
+        );
+        $izraz->execute(["uvjet"=>"%" . $uvjet . "%"]);
+        return $izraz->fetchAll();
+    }
+
+
+
 
 
 

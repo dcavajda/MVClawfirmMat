@@ -14,6 +14,7 @@ class Legal_casesController extends UlogaOperater
     }
 
 
+
     public function pripremaNovi()
     {
         $this->view->render("privatno/legal_cases/novi",
@@ -45,20 +46,21 @@ class Legal_casesController extends UlogaOperater
     
     {
         $legal_case = Legal_case::read($id);
-        if($legal_case["case_date_start"]!= null){
-            $legal_case["case_date_start"] = date("d. m. Y.",strtotime($legal_case["case_date_start"])); 
-        }
-        
-        $legal_case = Legal_case::read($id);
-        if($legal_case["case_date_end"]!= null){
-            $legal_case["case_date_end"] = date("d. m. Y.",strtotime($legal_case["case_date_end"]));
-        }
+      
 
       App::setParams($legal_case);
+
        $this->view->render("privatno/legal_cases/promjeni", 
        ['id'=>$id,
        "clients"=>Client::getClients(),
-       "lawyers"=>Lawyer::getLawyers()]);
+       "lawyers"=>Lawyer::getLawyers(),
+       "legal_trainees"=>Legal_trainee::getLegal_traineesNaLegal_cases($id),  
+       "cssFile"=>'<link rel="stylesheet" href="' . App::config("url") . 'public/css/jquery-ui.css">',
+       "jsLib"=>'<script src="' . App::config("url") . 'public/js/vendor/jquery-ui.js"></script>',
+       "javascript"=>'
+       <script>var grupa=' . $id . ';</script>
+       <script src="' . App::config("url") . 'public/js/grupe/skripta.js"></script>'
+       ]);
 
     }
 

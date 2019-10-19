@@ -7,17 +7,20 @@ class Legal_case
        
         $veza = DB::getInstance();
         $izraz = $veza->prepare("
-        select   
-        concat(c.firstname, ' ',c.lastname) as client,
+        select concat(c.firstname, ' ',c.lastname) as client,
         a.legal_case_id, a.legal_case_code, a.case_date_start, a.case_date_end,
-        concat(b.firstname, ' ', b.lastname) as lawyer      
+        concat(b.firstname, ' ', b.lastname) as lawyer,
+        e.legal_trainee_id
         from legal_case a 
         inner join lawyer b on a.lawyer=b.lawyer_id
         inner join client c on a.client=c.client_id
+        left join legal_case_trainee e on e.legal_case_id=a.legal_case_id
         group by
         concat(c.firstname, ' ',c.lastname),
         a.legal_case_id, a.legal_case_code, a.case_date_start, a.case_date_end,
         concat(b.firstname, ' ', b.lastname)
+        
+        
         
         "
         );
@@ -92,6 +95,18 @@ class Legal_case
         ");
         $_POST['legal_case_id']=$id;
         $izraz->execute($_POST);
+
+        $izraz->bindParam("client",$_POST["client"]);
+        $izraz->bindParam("legal_case_code",$_POST["legal_case_code"]);
+        $izraz->bindParam("case_date_start",$_POST["case_date_start"]);
+        $izraz->bindParam("lawyer",$_POST["lawyer"]);
+        if($_POST["case_date_end"]==""){
+            $izraz->bindValue("case_date_end",null);
+        }else{
+            $izraz->bindParam("case_date_end",$_POST["case_date_end"]);
+        }
+        
+        $izraz->execute();
     }
 
 
