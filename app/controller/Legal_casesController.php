@@ -47,6 +47,7 @@ class Legal_casesController extends UlogaOperater
     {
         $legal_case = Legal_case::read($id);
       
+        
 
       App::setParams($legal_case);
 

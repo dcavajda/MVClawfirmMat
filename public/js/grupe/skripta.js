@@ -1,10 +1,10 @@
 $( "#uvjet" ).autocomplete({
     source: function( request, response ) {
       $.ajax( {
-        url: "/legal_trainees/TraziLegal_trainee",
+        url: "/Legal_trainee/TraziLegal_trainees",
         data: {
           uvjet: request.term,
-          Legal_trainee: Legal_trainee
+          legal_case: legal_case
         },
         success: function( data ) {
           response( data );
@@ -13,7 +13,7 @@ $( "#uvjet" ).autocomplete({
     },
     minLength: 1,
     select: function( event, ui ) {
-        console.log( "Idem na server s: " + legal_trainee + " i " + ui.item.legal_trainee_id );
+        console.log( "Idem na server s: " + legal_case + " i " + ui.item.legal_case_id );
     }
   } ).autocomplete( "instance" )._renderItem = function( ul, item ) {
     return $( "<li>" )

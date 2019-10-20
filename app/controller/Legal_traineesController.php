@@ -15,6 +15,7 @@ class Legal_traineesController extends Controller
 
 
 
+
     public function pripremaNovi()
     {
         $this->view->render("privatno/legal_trainees/novi");
@@ -40,7 +41,8 @@ class Legal_traineesController extends Controller
     public function pripremaPromjeni($id)
     {
         App::setParams(Legal_trainee::read($id));
-        $this->view->render("privatno/legal_trainees/promjeni", ['id'=>$id]);
+        $this->view->render("privatno/legal_trainees/promjeni", 
+        ['id'=>$id]);
     }
 
 
@@ -146,12 +148,16 @@ class Legal_traineesController extends Controller
     }  
 
 
+
     public function TraziLegal_trainees()
     {
         header('Content-Type: application/json');
-        echo json_encode(Legal_trainee::getTraziLegal_trainees(App::param("uvjet")));
+        echo json_encode(Legal_trainee::getTraziLegal_trainees(App::param("uvjet"),App::param("legal_case")));
 
     }
+
+    
+
 
     private function greska($polje,$poruka){
         $this->view->render($this->viewGreska,

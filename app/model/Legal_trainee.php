@@ -36,19 +36,18 @@ class Legal_trainee
     {
        
         $veza = DB::getInstance();
-        $izraz = $veza->prepare("
-        
+        $izraz = $veza->prepare("       
         select a.legal_trainee_id, a.firstname, a.lastname, a.IBAN, a.OIB, 
         b.legal_case_id
         from legal_trainee a
         left join legal_case_trainee b on a.legal_trainee_id=b.legal_trainee_id
-
         ");
         $izraz->execute(["legal_case"=>$legal_case]);
         return $izraz->fetchAll();
     }
 
-    public static function getTraziLegal_trainees($uvjet)
+    
+    public static function getTraziLegal_trainees($uvjet, $legal_case)
     {
 
         $veza = DB::getInstance();
@@ -59,9 +58,8 @@ class Legal_trainee
         left join legal_case_trainee b on a.legal_trainee_id=b.legal_trainee_id    
         where concat(a.firstname, a.lastname) like :uvjet
         " 
-    
         );
-        $izraz->execute(["uvjet"=>"%" . $uvjet . "%"]);
+        $izraz->execute(["uvjet"=>"%" . $uvjet . "%","legal_case"=>$legal_case]);
         return $izraz->fetchAll();
     }
 
