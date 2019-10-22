@@ -59,8 +59,8 @@ class Legal_casesController extends UlogaOperater
        "cssFile"=>'<link rel="stylesheet" href="' . App::config("url") . 'public/css/jquery-ui.css">',
        "jsLib"=>'<script src="' . App::config("url") . 'public/js/vendor/jquery-ui.js"></script>',
        "javascript"=>'
-       <script>var grupa=' . $id . ';</script>
-       <script src="' . App::config("url") . 'public/js/grupe/skripta.js"></script>'
+       <script>var legal_case=' . $id . ';</script>
+       <script src="' . App::config("url") . 'public/js/legal_trainees/skripta.js"></script>'
        ]);
 
     }
@@ -107,7 +107,18 @@ class Legal_casesController extends UlogaOperater
         ]);
     }
 
-    
+    public function addLegalTrainee()
+    {
+        Legal_case::addLegalTrainee(App::param("legal_case"),App::param("legal_trainee"));
+        echo "OK";
+    }
+
+
+    public function delLegalTreainee()
+    {
+        Legal_case::delLegalTreainee(App::param("legal_case"),App::param("legal_trainee"));
+        echo "OK";
+    }
 
 }
 

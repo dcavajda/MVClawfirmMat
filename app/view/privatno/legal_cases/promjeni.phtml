@@ -28,7 +28,7 @@
                             <th>Akcija</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tijelo">
                         <?php foreach($legal_trainees as $legal_trainee):?>
                             <tr>
                                 <td><?php echo $legal_trainee->firstname . " " 
@@ -40,7 +40,11 @@
                                 <?php echo $legal_trainee->IBAN ?></span>
                                 </td>
 
-                                <td></td>
+                                <td>
+                                <a href="#" class="legal_trainee" 
+                                id="p_<?php echo $legal_trainee->legal_trainee_id ?>"> 
+                                <i class="fas fa-trash fa-2x" style="color: red"></i> 
+                                </a></td>
                             </tr>
                         <?php endforeach;?>
                     </tbody>

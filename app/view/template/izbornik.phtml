@@ -14,9 +14,6 @@
           </li>
           <li <?php echo Utility::active('/index/kontakt'); ?>>
             <a href="<?php echo App::config("url") ?>index/kontakt">Contact</a>
-          
-          <li <?php echo Utility::active('/index/js'); ?>>
-        <a href="<?php echo App::config("url") ?>index/js">JS</a>
            </li> 
           <?php if(isset($_SESSION["autoriziran"])): ?>
             <?php if($_SESSION["autoriziran"]->uloga==="oper"): ?>

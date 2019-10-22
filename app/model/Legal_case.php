@@ -138,4 +138,37 @@ class Legal_case
     }
 
 
+
+    public static function addLegalTrainee($legal_case_id,$legal_trainee_id)
+    {
+        $veza = DB::getInstance();
+        $izraz = $veza->prepare("
+        
+        insert into legal_case_trainee 
+        (legal_case_id, legal_trainee_id)
+        values
+        (:legal_case_id, :legal_trainee_id)
+        
+        ");
+        $izraz->bindParam("legal_case_id",$legal_case_id);
+        $izraz->bindParam("legal_trainee_id",$legal_trainee_id);
+        $izraz->execute();
+    }
+
+    public static function delLegalTreainee($legal_case_id,$legal_trainee_id)
+    {
+        $veza = DB::getInstance();
+        $izraz = $veza->prepare("
+        
+        delete from legal_case_trainee where
+        legal_case_id=:legal_case_id
+        and legal_trainee_id=:legal_trainee_id
+        
+        ");
+        $izraz->bindParam("legal_case_id",$legal_case_id);
+        $izraz->bindParam("legal_trainee_id",$legal_trainee_id);
+        $izraz->execute();
+    }
+
+
 }

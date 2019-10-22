@@ -37,10 +37,10 @@ class Legal_trainee
        
         $veza = DB::getInstance();
         $izraz = $veza->prepare("       
-        select a.legal_trainee_id, a.firstname, a.lastname, a.IBAN, a.OIB, 
-        b.legal_case_id
+        select a.legal_trainee_id, a.firstname, a.lastname, a.IBAN, a.OIB
         from legal_trainee a
         left join legal_case_trainee b on a.legal_trainee_id=b.legal_trainee_id
+        where b.legal_case_id=:legal_case
         ");
         $izraz->execute(["legal_case"=>$legal_case]);
         return $izraz->fetchAll();
@@ -52,11 +52,13 @@ class Legal_trainee
 
         $veza = DB::getInstance();
         $izraz = $veza->prepare("
-        select a.legal_trainee_id, a.firstname, a.lastname, a.IBAN, a.OIB, 
-        b.legal_case_id
+        select a.legal_trainee_id, a.firstname, a.lastname, a.IBAN, a.OIB 
         from legal_trainee a
         left join legal_case_trainee b on a.legal_trainee_id=b.legal_trainee_id    
         where concat(a.firstname, a.lastname) like :uvjet
+        and a.legal_trainee_id not in 
+        (select distinct legal_trainee_id from 
+        legal_case_trainee where legal_case_id=:legal_case)
         " 
         );
         $izraz->execute(["uvjet"=>"%" . $uvjet . "%","legal_case"=>$legal_case]);

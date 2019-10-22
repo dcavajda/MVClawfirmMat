@@ -5,19 +5,19 @@ return [
     "dev"=> true,
     "db" => [  
   "server"=>"localhost",
-	"baza"=>"morfej_lawfirm",
-	"korisnik"=>"morfej_dcavajda",
-	"lozinka"=>"dcavajda"	
+	"baza"=>"lawfirm",
+	"korisnik"=>"edunova",
+	"lozinka"=>"edunova"	
     ],
     "stavakaPoStranici"=>24
     
 ];
 /*
-
+  "server"=>"localhost",
+	"baza"=>"morfej_lawfirm",
+	"korisnik"=>"morfej_dcavajda",
+	"lozinka"=>"dcavajda"	
 	
-	 	  "server"=>"localhost",
-        "baza"=>"lawfirm",
-        "korisnik"=>"edunova",
-        "lozinka"=>"edunova"	
+	
 */
 
